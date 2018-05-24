@@ -21,8 +21,7 @@ module ApplicationHelper
       image_tag "https://qph.fs.quoracdn.net/main-qimg-680c8f445130201b7b1850e7d02d76dd-c",
         alt: product.name
     else
-       image_tag "https://qph.fs.quoracdn.net/main-qimg-680c8f445130201b7b1850e7d02d76dd-c",
-        alt: product.name
+      image_tag product.images.first.image_url, alt: product.name
     end
   end
 
