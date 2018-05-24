@@ -20,12 +20,6 @@ module SessionsHelper
     end
   end
 
-  def forget user
-    user.forget
-    cookies.delete(:user_id)
-    cookies.delete(:remember_token)
-  end
-
   def remember user
     user.remember
     cookies.permanent.signed[:user_id] = user.id
@@ -33,7 +27,7 @@ module SessionsHelper
   end
 
   def logged_in?
-    current_user ? true : false
+    current_user.present?
   end
 
   def log_out

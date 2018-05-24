@@ -18,6 +18,6 @@
  *= require ratting
  *= require sequence-looptheme
  *= require style
- *= require_self
  *= require toastr
+ *= require_self
  */
