@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 20180604044135) do
     t.string "image"
     t.string "password_digest"
     t.date "birthday"
-    t.integer "role"
+    t.integer "role", default: 0
     t.string "remember_digest"
     t.string "image"
     t.datetime "created_at", null: false
