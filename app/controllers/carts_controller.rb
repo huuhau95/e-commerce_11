@@ -10,6 +10,7 @@ class CartsController < ApplicationController
       cart = session[:cart]
       cart[@id] = cart[@id] ? (cart[@id].to_i + 1) : 1
       session_cart
+      flash[:notice] = t "success_add_cart"
       format.js {render "carts.js.erb"}
     end
   end
@@ -20,6 +21,7 @@ class CartsController < ApplicationController
       cart.delete(@id)
       session_cart
       flash[:notice] = t "success_delete_cart"
+      format.js {render "carts.js.erb"}
     end
   end
 
