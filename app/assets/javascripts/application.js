@@ -20,4 +20,3 @@
 //= require rails-ujs
 //= require script.min
 //= require toastr
-//= require turbolinks
