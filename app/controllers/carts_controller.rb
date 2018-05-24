@@ -15,22 +15,22 @@ class CartsController < ApplicationController
     end
   end
 
+  def update
+    respond_to do |format|
+      cart = session[:cart]
+      cart[@id] = params[:quantity].to_i
+      session_cart
+      flash[:notice] = t "success_update_cart"
+      format.js {render "carts.js.erb"}
+    end
+  end
+
   def destroy
     respond_to do |format|
       cart = session[:cart]
       cart.delete(@id)
       session_cart
       flash[:notice] = t "success_delete_cart"
-      format.js {render "carts.js.erb"}
-    end
-  end
-
-  def update
-    respond_to do |format|
-      cart = session[:cart]
-      cart[@id] = params[:quantity].to_i
-      session_cart
-      @mess = t "success_update_cart"
       format.js {render "carts.js.erb"}
     end
   end
