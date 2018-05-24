@@ -21,6 +21,9 @@
       <% @total += product.new_price * quantity %>
       <tr>
         <td>
+          <%= gravatar_for product %>
+        </td>
+        <td>
           <div class="shop-details">
             <div class="productname">
               <%= product.name %>
