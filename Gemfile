@@ -19,6 +19,7 @@ gem "font-awesome-rails"
 =======
 >>>>>>> manage_comments
 gem "i18n-js"
+gem "font-awesome-rails"
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
 gem "font-awesome-rails"

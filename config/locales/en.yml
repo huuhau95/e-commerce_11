@@ -164,6 +164,7 @@ en:
   show_order_detail: "Show order_detail"
   list_comments: "List comments"
   invalid: "Invalid email/password combination"
+<<<<<<< HEAD
   create_success: "Create success"
   update_success: "Update success"
   delete_fail: "Delete fail"
@@ -231,8 +232,6 @@ en:
   upadte_profile: "Upadte profile"
   save_change: "Save changes"
   edit_user: "Edit user"
-  sample_app: "sample app"
-  sample_app_tolow : "SAMPLE APP"
   acount: "Account"
   the_form_contains: "The form contains"
   profile_updated: "Profile updated"
