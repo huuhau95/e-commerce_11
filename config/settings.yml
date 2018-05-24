@@ -19,3 +19,4 @@ product:
 order:
   min_length_address: 5
   max_length_address: 100
+  max_size_image: 5
