@@ -24,8 +24,7 @@
       </li>
     <% end %>
     <li><span class="total"><%= t "total" %> <strong><%= number_format @total %></strong></span>
-      <button type="" class="checkout"><%= link_to t("check out"), carts_path, class: "checkout" %></button>
+      <%= link_to t("view_cart"), carts_path, class: "checkout" %>
     </li>
   </ul>
 <% end %>
-
