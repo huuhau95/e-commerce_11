@@ -16,3 +16,4 @@ product:
   max_price: 10000
   min_quantity: 1
   max_quantity: 500
+  max_size_image: 5
