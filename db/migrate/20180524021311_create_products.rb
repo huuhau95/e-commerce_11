@@ -7,7 +7,6 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.integer :new_price
       t.integer :quantity
       t.integer :discount
-      t.string :images
       t.text :description
       t.text :attribute
       t.float :average_point
