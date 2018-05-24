@@ -22,4 +22,9 @@ class Admin::SessionsController < Admin::BaseController
     log_out_admin if logged_in_admin?
     redirect_to admin_root_url
   end
+
+  def destroy
+    log_out if logged_in?
+    redirect_to admin_root_url
+  end
 end
