@@ -164,7 +164,6 @@ en:
   show_order_detail: "Show order_detail"
   list_comments: "List comments"
   invalid: "Invalid email/password combination"
-<<<<<<< HEAD
   create_success: "Create success"
   update_success: "Update success"
   delete_fail: "Delete fail"
