@@ -10,17 +10,6 @@ class CartsController < ApplicationController
       cart = session[:cart]
       cart[@id] = cart[@id] ? (cart[@id].to_i + 1) : 1
       session_cart
-      flash[:notice] = t "success_add_cart"
-      format.js {render "carts.js.erb"}
-    end
-  end
-
-  def update
-    respond_to do |format|
-      cart = session[:cart]
-      cart[@id] = params[:quantity].to_i
-      session_cart
-      flash[:notice] = t "success_update_cart"
       format.js {render "carts.js.erb"}
     end
   end
