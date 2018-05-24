@@ -438,7 +438,10 @@ button:hover {
     padding-bottom: 30px;
 }
 
-
+.fa.fa-refresh{
+  color: #FA0707;
+  font-size: 17px;
+}
 /* HEADER STYLE */
 
 #home {

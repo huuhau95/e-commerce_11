@@ -99,7 +99,6 @@ ActiveRecord::Schema.define(version: 20180604084957) do
     t.date "birthday"
     t.integer "role", default: 0
     t.string "remember_digest"
-    t.string "images"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -42,7 +42,7 @@ module ApplicationHelper
     end
   end
 
-  def get_user_images comment
+  def load_user_images comment
     if comment.image.blank?
       image = "https://png.icons8.com/dotty/2x/administrator-male.png"
     else
