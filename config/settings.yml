@@ -16,3 +16,6 @@ settings:
   max_value_star: 5
   max_size_image_resize: 400
   accept_file: "image/jpeg,image/gif,image/png"
+setting_model:
+  page_size: 5
+  role_admin: 1

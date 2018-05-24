@@ -254,8 +254,12 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
+<<<<<<< 745e0ff5bfe486dcdd04a98b23ff4e3b04273480
     whenever (0.10.0)
       chronic (>= 0.6.3)
+=======
+    will_paginate (3.1.6)
+>>>>>>> static_pages
     xpath (3.1.0)
       nokogiri (~> 1.8)
 
@@ -294,7 +298,11 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
+<<<<<<< 745e0ff5bfe486dcdd04a98b23ff4e3b04273480
   whenever
+=======
+  will_paginate (= 3.1.6)
+>>>>>>> static_pages
 
 BUNDLED WITH
    1.16.1
