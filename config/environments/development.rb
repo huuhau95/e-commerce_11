@@ -30,15 +30,15 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
   # test send mail
   # config.action_mailer.default_url_options = { :host => "localhost:3000" }
-  host = "localhost:3000"
+  host = ENV["DEVELOPMENT"]
   config.action_mailer.default_url_options = { host: host }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
     domain: host,
-    user_name: "hungnx96@gmail.com",
-    password:  "Daihocbachkhoa1",
+    user_name: ENV["EMAIL_USERNAME"],
+    password: ENV["EMAIL_PASSWORD"],
     authentication: "plain",
     enable_starttls_auto: true
   }
