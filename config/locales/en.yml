@@ -304,7 +304,7 @@ en:
   error_order: "Save order error"
   info_order: "Info Order"
   success_order: "Order Success . Please check mail for details"
+  update_user_sucess: "Update data success"
   error_inser_rating: "Insert Rating Error"
   error_update_rating: "Update Rating Error"
   avg_rating: "Average Rating"
-  update_user_sucess: "Update data success"
