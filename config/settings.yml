@@ -24,3 +24,4 @@ order:
   max_role: 2
   max_value_address: 100
   min_value_address: 4
+  max_value_star: 5

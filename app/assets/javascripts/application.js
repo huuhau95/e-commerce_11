@@ -42,6 +42,7 @@ $(document).ready(function(){
   "hideMethod": "fadeOut"
 }
 });
+
 $(document).on('click', '.star_point', function(e){
   toastr['success']('Thank you rating product');
   $('#Scomit').click();
