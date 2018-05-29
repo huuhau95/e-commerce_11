@@ -10,6 +10,10 @@
     display: inline-block;
 }
 
+.bg_violet{
+  background: #9673bbb8 !important;
+}
+
 .pagination li a {
     color: black;
     float: left;

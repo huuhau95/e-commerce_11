@@ -1,0 +1,44 @@
+<%= form_for([:admin,@product]) do |f| %>
+  <%= render "admin/shared/error_messages", object: f.object %>
+  <div class="form-group">
+    <%= f.label :category_id %>
+    <%= f.collection_select :category_id, Category.order(:name), :id, :name,
+      {prompt: true}, {class: "form-control"} %>
+  </div>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :price %>
+    <%= f.number_field :price, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag "discount" %>
+    <input type="text" id="discount_price" class="form-control" />
+  </div>
+  <div class="form-group">
+    <%= f.label :new_price %>
+    <%= f.number_field :new_price, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :status %>
+    <%= f.select :status, [["In stock", true], ["Out of stock", false]],
+    {:prompt=>true}, {class: "form-control"} %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_field :description, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :images %>
+    <%= f.file_field :images, accept: "image/jpeg,image/gif,image/png" %>
+  </div>
+  <div class="center">
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  </div>
+<% end %>
