@@ -33,15 +33,15 @@
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="pages/icons/mdi.html">
-        <span class="menu-title">Icons</span>
-        <i class="mdi mdi-contacts menu-icon"></i>
-      </a>
+      <%= link_to admin_orders_path, class: 'nav-link' do %>
+        <span class="menu-title">Orders</span>
+        <i class="mdi mdi-table-large menu-icon"></i>
+      <% end %>
     </li>
     <li class="nav-item">
       <%= link_to admin_products_path, class: 'nav-link' do %>
         <span class="menu-title">Products</span>
-        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+        <i class="mdi mdi-table-large menu-icon"></i>
       <% end %>
     </li>
     <li class="nav-item">

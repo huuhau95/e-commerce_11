@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20180604044135) do
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "address"
     t.string "phone"
+    t.boolean "status"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
