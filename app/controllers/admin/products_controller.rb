@@ -54,7 +54,7 @@ module Admin
 
     def product_pamrams
       params.require(:product).permit :category_id, :name, :price, :new_price,
-        :quantity, :status, :description, :images
+        :quantity, :status, :description, :images, :discount
     end
   end
 end
