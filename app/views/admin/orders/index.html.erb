@@ -1,0 +1,39 @@
+<%= provide :title, t("list_orders") %>
+<div class="row">
+  <div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <div class="overflow_hidden">
+          <h1 class="float_left"><%= t "list_orders" %></h1>
+        </div>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>
+                <%= t "id_order" %>
+              </th>
+              <th>
+                <%= t "customer" %>
+              </th>
+              <th>
+                <%= t "status" %>
+              </th>
+              <th>
+                <%= t "book date" %>
+              </th>
+              <th>
+                <%= t "actions" %>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @orders %>
+          </tbody>
+        </table>
+        <div class="margin_bottom20px float_right">
+          <%= will_paginate %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
