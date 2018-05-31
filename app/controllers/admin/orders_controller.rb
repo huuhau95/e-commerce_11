@@ -10,7 +10,6 @@ module Admin
 
     def edit
       @order = Order.find_by id: params[:id]
-      @order_details = @order.order_details
     end
 
     def new; end

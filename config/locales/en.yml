@@ -66,7 +66,6 @@ en:
   upadte_profile: "Upadte profile"
   save_change: "Save changes"
   edit_user: "Edit user"
-<<<<<<< d960cc5b187dadb3c2689fdfb1a758f2c45b23e6
   sample_app: "sample app"
   sample_app_tolow : "SAMPLE APP"
   acount: "Account"
@@ -147,6 +146,3 @@ en:
   update_user_sucess: "Update data success"
   Total_quantities: "Statistic in this month"
   Monthly_statistic: "Monthly statistic"
-=======
-
->>>>>>> manage_orders
