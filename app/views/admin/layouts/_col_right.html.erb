@@ -3,6 +3,7 @@
     <li class="nav-item nav-profile">
       <a href="#" class="nav-link">
         <div class="nav-profile-image">
+          <%= image_tag session[:user_picture] %>
           <span class="login-status online"></span>
           <!--change to offline or busy as needed-->
         </div>
@@ -14,44 +15,37 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="index.html">
+      <%= link_to admin_root_path, class: "nav-link" do %>
         <span class="menu-title">Dashboard</span>
         <i class="mdi mdi-home menu-icon"></i>
-      </a>
+      <% end %>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-        <span class="menu-title">UI Elements</span>
-        <i class="menu-arrow"></i>
-        <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-      </a>
-      <div class="collapse" id="ui-basic">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-          <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
-        </ul>
-      </div>
+      <%= link_to admin_comments_path, class: "nav-link" do %>
+        <span class="menu-title">Comments</span>
+        <i class="mdi mdi-comment-multiple-outline menu-icon"></i>
+      <% end %>
     </li>
     <li class="nav-item">
-      <%= link_to admin_orders_path, class: 'nav-link' do %>
+      <%= link_to admin_orders_path, class: "nav-link" do %>
         <span class="menu-title">Orders</span>
-        <i class="mdi mdi-table-large menu-icon"></i>
+        <i class="mdi mdi-calendar-blank menu-icon"></i>
       <% end %>
     </li>
     <li class="nav-item">
-      <%= link_to admin_products_path, class: 'nav-link' do %>
+      <%= link_to admin_products_path, class: "nav-link" do %>
         <span class="menu-title">Products</span>
-        <i class="mdi mdi-table-large menu-icon"></i>
+        <i class="mdi mdi-shopping menu-icon"></i>
       <% end %>
     </li>
     <li class="nav-item">
-      <%= link_to admin_users_path, class: 'nav-link' do %>
+      <%= link_to admin_users_path, class: "nav-link" do %>
         <span class="menu-title">Users</span>
-        <i class="mdi mdi-table-large menu-icon"></i>
+        <i class="mdi mdi-account-multiple menu-icon"></i>
       <% end %>
     </li>
     <li class="nav-item">
-      <%= link_to admin_categories_path, class: 'nav-link' do %>
+      <%= link_to admin_categories_path, class: "nav-link" do %>
         <span class="menu-title">Categories</span>
         <i class="mdi mdi-table-large menu-icon"></i>
       <% end %>
