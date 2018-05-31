@@ -30360,4 +30360,9 @@ dl li {
 .margin10{
     margin: 10px;
 }
->>>>>>> manage_orders
+.view_img_parent{
+    margin: 10px 0;
+}
+.view_img_parent .view-img img{
+    max-width: 200px;
+}
