@@ -15,15 +15,6 @@ class ApplicationController < ActionController::Base
     redirect_to login_path
   end
 
-<<<<<<< 3bc9299d930b0d86cc3a3f0bef381617a8cb6ef8
-=======
-  def require_login
-    return if logged_in?
-    flash[:danger] = t "please_login"
-    redirect_to login_path
-  end
-
->>>>>>> Update cart
   def session_cart
     @cart = session[:cart] || {}
     @count_product_cart = 0
