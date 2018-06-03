@@ -21,7 +21,6 @@ class CartsController < ApplicationController
       cart.delete(@id)
       session_cart
       flash[:notice] = t "success_delete_cart"
-      format.js {render "carts.js.erb"}
     end
   end
 
