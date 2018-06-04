@@ -2,8 +2,7 @@ class Admin::CommentsController < Admin::BaseController
   before_action :logged_in_user
   before_action :load_order, except: %i(index new create)
   def index
-    @comments = Comment.paginate page: params[:page],
-      per_page: Settings.setting_model.page_size
+    @comments = Comment.page(params[:page]).per Settings.settings.per_page
   end
 
   def show; end

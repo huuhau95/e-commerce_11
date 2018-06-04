@@ -2,9 +2,10 @@ module Admin
   class ProductsController < BaseController
     before_action :logged_in_user
     before_action :load_product, except: %i(index new create)
+    before_action :map_category, only: :index
 
     def index
-      @products = Product.paginate page: params[:page], per_page: Settings.setting_model.page_size
+      @products = Product.ordered.filter_by_category(params[:category_id]).search_by_name(params[:search]).page(params[:page]).per Settings.settings.per_page
     end
 
     def show; end
@@ -26,7 +27,7 @@ module Admin
     end
 
     def update
-      if @product.update product_pamrams
+      if @product.update_attributes product_pamrams
         flash[:success] = t "update_success"
         redirect_to admin_products_url
       else
@@ -45,6 +46,12 @@ module Admin
 
     private
 
+    def product_pamrams
+      params.require(:product).permit :category_id, :name, :price, :new_price,
+        :quantity, :status, :description, :discount,
+          images_attributes: [:id, :image_url, :_destroy]
+    end
+
     def load_product
         @product = Product.find_by id: params[:id]
         return if @product
@@ -52,9 +59,8 @@ module Admin
         redirect_to admin_products_url
     end
 
-    def product_pamrams
-      params.require(:product).permit :category_id, :name, :price, :new_price,
-        :quantity, :status, :description, :images, :discount
+    def map_category
+      @categories = Category.all.map{|c| [c.name, c.id]}
     end
   end
 end

@@ -1,9 +1,9 @@
 <tr>
   <td>
-    <%= product.id %>
+    <%= product.category.name %>
   </td>
   <td>
-    <%= image_tag product.images.url if product.images? %>
+    <%= image_tag product.images.first.image_url.url if product.images.first.present? %>
   </td>
   <td>
     <%= product.name %>
