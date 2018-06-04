@@ -1,0 +1,13 @@
+<div class="nested-fields">
+<div class="inline">
+  <%= f.file_field :image_url, accept: "image/jpeg,image/gif,image/png" %>
+</div>
+<div class="inline wd-80">
+  <% if f.object.persisted? %>
+      <%= image_tag f.object.image_url, size: 80 %>
+  <% end %>
+</div>
+<div class="inline">
+  <%= link_to_remove_association t(".remove"), f %>
+  </div>
+</div>

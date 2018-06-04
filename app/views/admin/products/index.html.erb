@@ -5,13 +5,32 @@
       <div class="card-body">
         <div class="overflow_hidden">
           <h1 class="float_left"><%= t "list_products" %></h1>
+
           <%= link_to t("add_product"), new_admin_product_path, class: "btn btn-primary float_right" %>
+        </div>
+        <div class="nav search-row" id="top_menu">
+          <%= form_tag admin_products_path, method: :get do %>
+            <%= text_field_tag :search, params[:search], class: "form-control sinput",placeholder: t("Enter_name") %>
+            <%= button_tag type: "submit", class: "btn btn-primary", name: nil do %>
+              Search
+            <% end %>
+          <% end %>
+        </div>
+        <div class="nav search-row" id="top_menu">
+          <%= form_tag admin_products_path, method: :get do %>
+             <%= select_tag :category_id, options_for_select(@categories),
+               {class: "form-control",include_blank: true} %>
+              <%= button_tag type: "submit", class: "btn btn-primary",
+                name: nil do %>
+                <%= t "Seach" %>
+              <% end %>
+          <% end %>
         </div>
         <table class="table table-bordered">
           <thead>
             <tr>
               <th>
-                <%= t "id_product" %>
+                <%= t "cateogries" %>
               </th>
               <th>
                 <%= t "images" %>
@@ -35,7 +54,7 @@
           </tbody>
         </table>
         <div class="margin_bottom20px float_right">
-          <%= will_paginate %>
+          <%= paginate @products, theme: 'twitter-bootstrap-3' %>
         </div>
       </div>
     </div>

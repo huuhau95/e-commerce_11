@@ -30381,3 +30381,9 @@ dl li {
   top: 0;
   opacity: 0;
 }
+.search-row input[name=search]{
+    float: left;
+    width: 50%;
+    margin-bottom: 20px;
+}
+
