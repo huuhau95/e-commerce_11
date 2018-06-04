@@ -20,13 +20,13 @@ class ApplicationController < ActionController::Base
     flash[:danger] = t "please_login"
     redirect_to login_path
   end
-  
+
   def require_login
     return if logged_in?
     flash[:danger] = t "please_login"
     redirect_to login_path
   end
-  
+
   def session_cart
     @cart = session[:cart] || {}
     @count_product_cart = 0
