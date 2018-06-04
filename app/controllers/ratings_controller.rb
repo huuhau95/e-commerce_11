@@ -1,7 +1,6 @@
 class RatingsController < ApplicationController
   before_action :load_menu, :set_search
   before_action :params_rating_id, only: :update
-  before_action :product_id_params
 
   def create
     @rating = current_user.ratings.build params_rating
