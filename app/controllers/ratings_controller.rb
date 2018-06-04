@@ -26,7 +26,7 @@ class RatingsController < ApplicationController
       redirect_to root_url
     end
   end
-
+  
   private
 
   def params_rating
