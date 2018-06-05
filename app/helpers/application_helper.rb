@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def gravatar_for product
-    if product.images.first.present?
+    if product.images.first.nil?
       image_tag "https://qph.fs.quoracdn.net/main-qimg-680c8f445130201b7b1850e7d02d76dd-c",
         alt: product.name
     else
