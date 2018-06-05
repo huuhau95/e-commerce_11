@@ -10,12 +10,12 @@ $(document).ready(function() {
       reader.readAsDataURL(input.files[0]);
     }
   }
-  $("#user_picture").change(function() {
+  $("#user_image").change(function() {
     readURL(this);
   });
 
-  $('.user_picture').on('click', function() {
-    $('#user_picture').trigger('click');
+  $('.user_image').on('click', function() {
+    $('#user_image').trigger('click');
 
   });
 });

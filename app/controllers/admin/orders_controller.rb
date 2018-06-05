@@ -3,7 +3,7 @@ module Admin
     before_action :logged_in_user
     before_action :load_order, except: %i(index new create)
     def index
-      @orders = Order.page(params[:page]).per Settings.settings.per_page
+      @orders = Order.filter_by_status(params[:status]).page(params[:page]).per Settings.settings.per_page
     end
 
     def show; end

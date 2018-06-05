@@ -2,7 +2,7 @@ class Admin::CommentsController < Admin::BaseController
   before_action :logged_in_user
   before_action :load_order, except: %i(index new create)
   def index
-    @comments = Comment.page(params[:page]).per Settings.settings.per_page
+    @comments = Comment.search_by_description(params[:description]).page(params[:page]).per Settings.settings.per_page
   end
 
   def show; end
