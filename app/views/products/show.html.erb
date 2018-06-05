@@ -29,7 +29,7 @@
             </h5>
             <section>
               <% if logged_in? %>
-                 <%= render "products/start", rating: @rating, product: @product.id %>
+                 <%= render "products/start", rating: @rating, product: @product %>
               <% end %>
             </section>
             <p>
