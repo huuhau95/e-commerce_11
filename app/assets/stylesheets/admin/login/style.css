@@ -455,3 +455,7 @@ input::placeholder {
     color: red;
     background: white;
 }
+.font16_clw {
+    font-size: 16px;
+    color: #fdfcfd;
+}

@@ -19,6 +19,14 @@
             <% end %>
           <% end %>
         </div>
+        <div class="nav search-row" id="top_menu">
+          <%= form_tag admin_users_path, method: :get do %>
+            <%= text_field_tag :search, params[:search], class: "form-control sinput",placeholder: t("Enter_name") %>
+            <%= button_tag type: "submit", class: "btn btn-primary", name: nil do %>
+              Search
+            <% end %>
+          <% end %>
+        </div>
         <table class="table table-bordered">
           <thead>
             <tr>

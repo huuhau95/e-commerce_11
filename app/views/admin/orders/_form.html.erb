@@ -144,7 +144,6 @@
         <h3 class="panel-title"><%= t "note" %></h3>
         <div class="pull-right">
           <span class="clickable filter" data-toggle="tooltip" title="" data-container="body" data-original-title="Toggle table filter">
-
           </span>
         </div>
       </div>
@@ -154,8 +153,7 @@
             <%= form_for([:admin,@order]) do |f| %>
               <div class="form-group">
                 <%= f.label :status %>
-                <%= f.select :status, [["Checked", true], ["Unchecked", false]],
-                {:prompt=>true}, {class: "form-control"} %>
+                 <%= f.select :status, Order.statuses.keys, {}, {class: "form-control"} %>
               </div>
               <div class="center">
                 <%= f.submit yield(:button_text), class: "btn btn-primary" %>

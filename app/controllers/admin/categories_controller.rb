@@ -1,8 +1,9 @@
 class Admin::CategoriesController < Admin::BaseController
+  before_action :logged_in_user
   before_action :load_category, except: %i(index new create)
 
   def index
-    @categories = Category.ordered.page(params[:page]).per Settings.settings.per_page
+    @categories = Category.ordered.search_by_name(params[:description]).page(params[:page]).per Settings.settings.per_page
   end
 
   def new
