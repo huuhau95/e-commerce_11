@@ -41,6 +41,13 @@
         </label>
         <%= f.password_field :password_confirmation, class: "input name_field" %>
       </div>
+      <% if logged_in? %>
+        <div class="form-row">
+          <span class="picture">
+            <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
+          </span>
+        </div>
+       <% end %>
        <%= f.submit yield(:button_text), class: "btn btn-primary" %>
     </div>
   </div>
