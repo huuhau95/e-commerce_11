@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new params_user
-    @user.role = 0
+
     if @user.save
       log_in @user
       redirect_to root_url

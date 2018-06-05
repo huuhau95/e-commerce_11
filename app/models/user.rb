@@ -14,13 +14,15 @@ class User < ApplicationRecord
 
   before_save :downcase_email
 
-  enum status: [:user, :admin]
+  mount_uploader :image, PictureUploader
 
-  validates :name, presence: true, length: {maximum: 50}
-  validates :role, presence: true
-  validates :email, presence: true, length: {maximum: 255},
+  validates :name, presence: true,
+   length: {maximum: Settings.validate.name_max_length}
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true,
+    length: {maximum: Settings.validate.email_max_length},
     format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
-  validates :password, presence: true,
+  validates :password, presence: true, allow_nil: true,
     length: {minimum: Settings.validate.min_length_password}
   scope :user_info, ->{select :id, :name, :image, :email, :role, :created_at}
   scope :search_by_name, ->(name){where("name LIKE ? ",
