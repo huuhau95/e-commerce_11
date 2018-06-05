@@ -14,10 +14,6 @@ gem "coffee-rails", "~> 4.2"
 gem "config"
 gem "faker", "1.7.3"
 gem "figaro"
-<<<<<<< e67369090d56f2cfa3faba1082045b50cf7fc0c5
-gem "font-awesome-rails"
-=======
->>>>>>> manage_comments
 gem "i18n-js"
 gem "font-awesome-rails"
 gem "jbuilder", "~> 2.5"
@@ -35,10 +31,7 @@ gem "sass-rails", "~> 5.0"
 gem "toastr-rails"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
-<<<<<<< e67369090d56f2cfa3faba1082045b50cf7fc0c5
 gem "whenever", require: false
-=======
->>>>>>> manage_comments
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

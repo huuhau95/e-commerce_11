@@ -27,8 +27,6 @@ module ApplicationHelper
 
   def get_user_images comment
     if comment.image.present?
-      image = comment.image
-    else
       image = "https://png.icons8.com/dotty/2x/administrator-male.png"
     else
       image = comment.image
