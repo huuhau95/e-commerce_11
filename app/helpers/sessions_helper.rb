@@ -1,7 +1,6 @@
 module SessionsHelper
   def log_in user
     session[:user_id] = user.id
-    session[:user_name] = user.name
   end
 
   def remember user
@@ -30,6 +29,10 @@ module SessionsHelper
     user.forget
     cookies.delete :user_id
     cookies.delete :remember_token
+  end
+
+  def current_user?(user)
+    user == current_user
   end
 
   def log_out

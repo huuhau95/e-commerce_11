@@ -1,12 +1,5 @@
-<% provide(:title, t("signup")) %>
-<% provide(:button_text, "Create my account") %>
-<div class="page-index">
-  <div class="container">
-    <p>
-      <%= yield(:title) %>
-    </p>
-  </div>
-</div>
+<% provide(:title, t("edit_user")) %>
+<% provide(:button_text, t('save_change')) %>
 <div class="container_fullwidth">
   <div class="container">
     <div class="row">
@@ -15,11 +8,11 @@
           <ol class="checkout-steps">
             <li class="steps active">
               <a href="#" class="step-title">
-              <%= t "acount" %>
+              <%= yield(:title) %>
               </a>
               <div class="step-description">
                 <div class="row">
-                  <%= render "users/register" %>
+                  <%= render "register" %>
                 </div>
               </div>
             </li>

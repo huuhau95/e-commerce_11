@@ -1,9 +1,9 @@
 <%= form_for @user do |f| %>
-  <div class="col-md-6 col-sm-6">
+  <div class="col-md-offset-3 col-md-6 col-sm-6">
   <%= render "shared/error", object: f.object %>
     <div class="your-details">
       <h5>
-        <%= t "register" %>
+        <%= yield(:title) %>
       </h5>
       <div class="form-row">
         <label class="lebel-abs">
@@ -41,7 +41,7 @@
         </label>
         <%= f.password_field :password_confirmation, class: "input name_field" %>
       </div>
-       <%= f.submit t("register"), class: "btn btn-primary" %>
+       <%= f.submit yield(:button_text), class: "btn btn-primary" %>
     </div>
   </div>
 <% end %>
