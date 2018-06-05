@@ -1,6 +1,7 @@
 class RatingsController < ApplicationController
   before_action :load_menu, :set_search_product
   before_action :params_rating_id, only: :update
+  before_action :product_id_params
 
   def create
   	@rating = current_user.ratings.build params_rating
@@ -32,13 +33,10 @@ class RatingsController < ApplicationController
     params.require(:rating).permit :point, :product_id
   end
 
-<<<<<<< 538d2b675339a4eaf518f363e1535cf791f2295d
   def product_id_params
     @product = Product.find_by_id params[:rating][:product_id]
   end
 
-=======
->>>>>>> ratting create
   def params_rating_id
     @rating = current_user.ratings.find_by id: params[:id]
     unless @rating
