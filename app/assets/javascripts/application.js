@@ -19,9 +19,10 @@
 //= require jquery.carouFredSel-6.2.1-packed
 //= require jquery.easing.1.3
 //= require jquery.flexslider
-//= require jquery.sequence-min
 //= require rails-ujs
 //= require script.min
+//= require jquery.sequence-min
+//= require jquery.elevatezoom.js
 //= require toastr
 //= require turbolinks
 

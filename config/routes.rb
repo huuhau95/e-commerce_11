@@ -15,9 +15,9 @@ Rails.application.routes.draw do
   resources :orders
   namespace :admin do
     root "static_pages#home"
-    get "/login", to: "sessions#new"
-    post "/login", to: "sessions#create"
-    delete "/logout", to: "sessions#destroy"
+    get "/login", to: "sessions#new_admin"
+    post "/login", to: "sessions#create_admin"
+    delete "/logout", to: "sessions#destroy_admin"
     resources :categories
     resources :products
     resources :users

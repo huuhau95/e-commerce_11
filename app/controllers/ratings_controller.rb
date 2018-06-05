@@ -4,13 +4,13 @@ class RatingsController < ApplicationController
   before_action :product_id_params
 
   def create
-    @rating = current_user.ratings.build params_rating
+  	@rating = current_user.ratings.build params_rating
 
-    if @rating.save
-      respond_to do |format|
-        format.js {render "rating.js.erb"}
+  	if @rating.save
+  		respond_to do |format|
+      format.js {render "rating.js.erb"}
       end
-    else
+  	else
       flash[:danger] = t "error_inser_rating"
       redirect_to root_url
     end

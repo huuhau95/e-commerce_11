@@ -3,7 +3,7 @@ class Admin::StaticPagesController < Admin::BaseController
 
   def home
     @total_orders = Order.count('id')
-    # @total_revenue = OrderDetail.sum(price*quantity)
+    @total_revenue = OrderDetail.all.sum('price*quantity')
     @total_member = User.count('id');
   end
 end

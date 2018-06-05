@@ -478,10 +478,14 @@ DEPENDENCIES
   faker (= 1.7.3)
   figaro
   fog (= 1.42)
+<<<<<<< 08baf9e00d2d4002474a56a90b2a6b06379fec6d
 <<<<<<< e67369090d56f2cfa3faba1082045b50cf7fc0c5
   font-awesome-rails
 =======
 >>>>>>> manage_comments
+=======
+  font-awesome-rails
+>>>>>>> backend
   i18n-js
   jbuilder (~> 2.5)
   jquery-rails

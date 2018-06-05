@@ -17,17 +17,18 @@ module ApplicationHelper
   end
 
   def gravatar_for product
-    if product.images.first.nil?
+    if product.images.first.present?
       image_tag "https://qph.fs.quoracdn.net/main-qimg-680c8f445130201b7b1850e7d02d76dd-c",
         alt: product.name
     else
-       image_tag "https://qph.fs.quoracdn.net/main-qimg-680c8f445130201b7b1850e7d02d76dd-c",
-        alt: product.name
+      image_tag product.images.first.image_url, alt: product.name
     end
   end
 
-  def load_user_images comment
-    if comment.image.blank?
+  def get_user_images comment
+    if comment.image.present?
+      image = comment.image
+    else
       image = "https://png.icons8.com/dotty/2x/administrator-male.png"
     else
       image = comment.image
