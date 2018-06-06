@@ -16,3 +16,4 @@ Rails.application.config.assets.precompile += %w( admin/admin.css admin/admin.js
 Rails.application.config.assets.precompile += %w( admin/login/admin.css )
 Rails.application.config.assets.precompile += %w( admin/change_img_user )
 Rails.application.config.assets.precompile += %w( admin/discount.js )
+Rails.application.config.assets.precompile += %w( script.min.js )

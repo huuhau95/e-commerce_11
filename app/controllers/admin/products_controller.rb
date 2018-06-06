@@ -5,7 +5,7 @@ module Admin
     before_action :map_category, only: :index
 
     def index
-      @products = Product.ordered.filter_by_category(params[:category_id]).search_by_name(params[:search]).page(params[:page]).per Settings.settings.per_page
+      @products = Product.ordered.filter_by_category(params[:category_id]).filter_by_status(params[:status]).search_by_name(params[:search]).page(params[:page]).per Settings.settings.per_page
     end
 
     def show; end
@@ -61,6 +61,7 @@ module Admin
 
     def map_category
       @categories = Category.all.map{|c| [c.name, c.id]}
+      @categories_option = Product.all.map{|c| [c.status, c.id]}
     end
   end
 end
