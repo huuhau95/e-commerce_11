@@ -20,8 +20,8 @@ class User < ApplicationRecord
   validates :role, presence: true
   validates :email, presence: true, length: {maximum: 255},
     format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
-  validates :password, length: {minimum: 6}, allow_nil: true
-
+  validates :password, presence: true,
+    length: {minimum: Settings.validate.min_length_password}
   scope :user_info, ->{select :id, :name, :image, :email, :role, :created_at}
   scope :search_by_name, ->(name){where("name LIKE ? ",
     "%#{name}%") if name.present?}
