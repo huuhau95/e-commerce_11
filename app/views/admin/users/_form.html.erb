@@ -1,7 +1,7 @@
 <%= form_for([:admin,@user]) do |f| %>
-  <%= render 'admin/shared/error_messages', object: f.object %>
+  <%= render "admin/shared/error_messages", object: f.object %>
   <%= f.label :name %>
-  <%= f.text_field :name, class: 'form-control' %>
+  <%= f.text_field :name, class: "form-control" %>
   <%= f.label :role %>
   <%= f.select :role, User.statuses.map { |key, value| [key, value] },{}, class: 'form-control' %>
   <%= f.label :email %>
@@ -15,7 +15,7 @@
       <img src="" alt="">
     <% end %>
     <div class="upload-btn-wrapper">
-      <button class="btn">Upload</button>
+      <button class="btn"><%= t "Upload" %></button>
       <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
     </div>
   </div>
