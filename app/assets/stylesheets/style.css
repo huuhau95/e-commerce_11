@@ -805,8 +805,10 @@ ul.dropdown-menu>li>a:hover {
 .option-cart-item {
     position: absolute;
     top: 35px;
+    max-height: 250px;
+    overflow-y: scroll;
     right: 24px;
-    width: 258px;
+    width: 285px;
     border: 1px solid #f7544a;
     -webkit-border-radius: 10px;
     border-radius: 10px;
@@ -897,6 +899,7 @@ ul.dropdown-menu>li>a:hover {
 }
 
 .option-cart-item .checkout {
+    margin-left: 1%;
     float: right;
 }
 

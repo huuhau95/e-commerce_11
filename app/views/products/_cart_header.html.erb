@@ -1,8 +1,9 @@
-<a href="javascript:void(0)" class="cart-icon"><%= t "cart" %>
+<%= link_to(carts_path, class: "cart-icon")  do %>
+  <%= t "cart" %>
   <span class="cart_no">
     <%= @count_product_cart %>
   </span>
-</a>
+<% end %>
 <% unless @cart.empty? %>
   <ul class="option-cart-item">
     <% @products_cart.each do |product, quantity| %>
