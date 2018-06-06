@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   mount_uploader :image, PictureUploader
 
+  mount_uploader :image, PictureUploader
+
   enum status: [:user, :admin]
 
   before_save :downcase_email

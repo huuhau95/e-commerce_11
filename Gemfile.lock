@@ -282,7 +282,11 @@ GEM
       domain_name (~> 0.5)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
+<<<<<<< 98dcf606182819c8de3dcde626983855a519a3d6
     i18n-js (3.0.7)
+=======
+    i18n-js (3.0.8)
+>>>>>>> add edit users
       i18n (>= 0.6.6, < 2)
     inflecto (0.0.2)
     ipaddress (0.8.3)
