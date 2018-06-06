@@ -70,12 +70,21 @@
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only"><%= t "navigation" %></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
           </div>
           <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li class="active dropdown">
+             <ul class="nav navbar-nav">
+              <% if params[:action]=="home" %>
+                <% @active = "active" %>
+              <% end %>
+              <li class="dropdown <%= @active %>">
                 <a href="<%= root_path %>"><%= t "home" %></a>
               </li>
+
               <% @categories.each do |category| %>
-                <li><%= link_to category.name, category_path(category) %></li>
+                <% if category.id == params[:id].to_i && params[:controller]=="categories" %>
+                  <% @active = "active" %>
+                <% else %>
+                  <% @active = "" %>
+                <% end %>
+                 <li class="<%= @active %>"><%= link_to category.name, category_path(category) %></li>
               <% end %>
             </ul>
           </div>
