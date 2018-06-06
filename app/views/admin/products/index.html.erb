@@ -19,7 +19,7 @@
             <div style="clear:both">
               <%= label_tag "Select status" %>
             </div>
-              <%= select_tag :status, options_for_select(@categories_option),
+              <%= select_tag :status, options_for_select([['Stock', 1], ['Out of stock', 0]]),
              {class: "form-control",include_blank: "Choose status"} %>
             <%= button_tag type: "submit", class: "btn btn-primary", name: nil do %>
               Search

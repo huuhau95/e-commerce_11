@@ -16,6 +16,14 @@ module ApplicationHelper
     total
   end
 
+  def total_money_order order
+    total = 0
+    order.each do |order|
+      total += order.price * order.quantity
+    end
+    number_format total
+  end
+
   def gravatar_for product
     if product.images.first.nil?
       image_tag "https://qph.fs.quoracdn.net/main-qimg-680c8f445130201b7b1850e7d02d76dd-c",
@@ -26,9 +34,7 @@ module ApplicationHelper
   end
 
   def get_user_images comment
-    if comment.image.present?
-      image = comment.image
-    else
+    if comment.image.blank?
       image = "https://png.icons8.com/dotty/2x/administrator-male.png"
     else
       image = comment.image

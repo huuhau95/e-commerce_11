@@ -11,6 +11,7 @@
               <%= yield(:title) %>
               </a>
               <div class="step-description">
+                <%= link_to "View History Order", histories_path, class: "btn btn-primary" %>
                 <div class="row">
                   <div class="col-md-offset-4 col-md-4">
                     <%= image_tag current_user.image %>

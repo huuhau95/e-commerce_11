@@ -61,7 +61,7 @@ module Admin
 
     def map_category
       @categories = Category.all.map{|c| [c.name, c.id]}
-      @categories_option = Product.all.map{|c| [c.status, c.id]}
+      @categories_option = Product.all.map{|c| [c.status, c.id]}.uniq
     end
   end
 end
