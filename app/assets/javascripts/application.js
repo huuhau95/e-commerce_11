@@ -44,3 +44,10 @@ $(document).on('click', '.star_point', function(e){
   toastr['success']('Thank you rating product');
   $('#Scomit').click();
 });
+$(document).on('turbolinks:load', function() {
+  $(".scroll-to-product").click(function(){
+      $('html, body').animate({
+      scrollTop: $(".container_fullwidth").offset().top-109
+        }, 1000)
+  });
+})

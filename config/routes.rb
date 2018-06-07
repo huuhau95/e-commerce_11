@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'history/index'
 
-  get 'home/index'
+  get 'home/show'
 
   root "static_pages#home"
   get "new", to: "users#new"
