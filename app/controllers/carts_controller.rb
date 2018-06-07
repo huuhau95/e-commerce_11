@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
-  before_action :product_params_id, :load_menu,:set_search_product
-  before_action :cart_user, only: :index
+  before_action :find_id_product, :load_menu
+  before_action :check_cart_existence, only: [:index]
 
   def index; end
 
@@ -15,22 +15,22 @@ class CartsController < ApplicationController
     end
   end
 
+  def update
+    respond_to do |format|
+      cart = session[:cart]
+      cart[@id] = params[:quantity].to_i
+      session_cart
+      flash[:notice] = t "success_update_cart"
+      format.js {render "carts.js.erb"}
+    end
+  end
+
   def destroy
     respond_to do |format|
       cart = session[:cart]
       cart.delete(@id)
       session_cart
       flash[:notice] = t "success_delete_cart"
-      format.js {render "carts.js.erb"}
-    end
-  end
-
-  def update
-    respond_to do |format|
-      cart = session[:cart]
-      cart[@id] = params[:quantity].to_i
-      session_cart
-      @mess = t "success_update_cart"
       format.js {render "carts.js.erb"}
     end
   end

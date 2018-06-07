@@ -8,6 +8,8 @@ settings:
   limit_product: 12
   limit_product_slibar: 3
   max_value_input: 1
+  max_value_address: 100
+  min_value_address: 4
 setting_model:
   page_size: 5
   role_admin: 1
@@ -22,6 +24,4 @@ order:
   max_size_image: 5
   min_role: 1
   max_role: 2
-  max_value_address: 100
-  min_value_address: 4
   max_value_star: 5
