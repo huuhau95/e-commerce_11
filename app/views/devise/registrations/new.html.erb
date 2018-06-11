@@ -1,8 +1,9 @@
-<% provide :title, t("login") %>
+<% provide(:title, t("signup")) %>
+<% provide(:button_text, "Create my account") %>
 <div class="page-index">
   <div class="container">
     <p>
-      <%= t "acount" %>
+      <%= yield(:title) %>
     </p>
   </div>
 </div>
@@ -18,7 +19,7 @@
               </a>
               <div class="step-description">
                 <div class="row">
-                   <%= render "login" %>
+                  <%= render "form" %>
                 </div>
               </div>
             </li>

@@ -42,14 +42,15 @@
              </div>
              <div class="col-md-3">
                 <ul class="usermenu">
-                <% if logged_in? %>
+                <% if user_signed_in? %>
                 <li>
-                  <%= link_to current_user.name, edit_user_path(current_user) %>
+                  <%= link_to current_user.name, edit_user_registration_path,
+                    {class: "log"} %>
                 </li>
-                <li><%= link_to t("logout"), logout_path, method: :delete %></li>
+                <li><%= link_to t("logout"), destroy_user_session_path, method: :delete %></li>
                 <% else %>
-                <li><%= link_to t("login"), login_path,{class: "login"} %></li>
-                <li><%= link_to t("Register"), new_path,{class: "register"} %></li>
+                <li><%= link_to t("login"), new_user_session_path,{class:  "log"} %></li>
+                <li><%= link_to t("Register"), new_user_registration_path,{class: "log"} %></li>
                 <% end %>
               </ul>
              </div>
@@ -58,7 +59,7 @@
         <div class="clearfix"></div>
         <div class="header_bottom">
           <ul class="option">
-            <li class="option-cart" style="display: inline-block;float: right;">
+            <li class="option-cart">
               <%= render "products/cart_header" %>
             </li>
           </ul>
@@ -73,14 +74,15 @@
               <li class="dropdown <%= @active %>">
                 <a href="<%= root_path %>"><%= t "home" %></a>
               </li>
-
-              <% @categories.each do |category| %>
-                <% if category.id == params[:id].to_i && params[:controller]=="categories" %>
-                  <% @active = "active" %>
-                <% else %>
-                  <% @active = "" %>
+              <% if @categories %>
+                <% @categories.each do |category| %>
+                  <% if category.id == params[:id].to_i && params[:controller]=="categories" %>
+                    <% @active = "active" %>
+                  <% else %>
+                    <% @active = "" %>
+                  <% end %>
+                   <li class="<%= @active %>"><%= link_to category.name, category_path(category) %></li>
                 <% end %>
-                 <li class="<%= @active %>"><%= link_to category.name, category_path(category) %></li>
               <% end %>
             </ul>
           </div>

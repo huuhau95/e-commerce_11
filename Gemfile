@@ -12,19 +12,30 @@ gem "carrierwave", "1.2.2"
 gem "cocoon"
 gem "coffee-rails", "~> 4.2"
 gem "config"
+gem "devise"
 gem "faker", "1.7.3"
 gem "figaro"
+gem "font-awesome-rails"
 gem "i18n-js"
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
+<<<<<<< 14605b4ed8d6484d49880d0803d81db60e1521b7
 gem "font-awesome-rails"
 gem 'whenever', require: false
+=======
+>>>>>>> login api
 gem "kaminari"
 gem "material_icons"
 gem "mini_magick", "4.7.0"
 gem "ransack"
 gem "mysql2"
+<<<<<<< 14605b4ed8d6484d49880d0803d81db60e1521b7
 gem "turbolinks"
+=======
+gem "omniauth"
+gem "omniauth-facebook"
+gem "omniauth-google-oauth2"
+>>>>>>> login api
 gem "puma", "~> 3.7"
 gem "rails", "~> 5.1.6"
 gem "safe_attributes"

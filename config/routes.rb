@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users,
+    controllers:{
+      omniauth_callbacks: "users/omniauth_callbacks",
+      registrations: "users/registrations"
+  }
   get 'history/index'
 
   get 'home/show'
@@ -10,7 +15,6 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new"
   resources :categories, only: [:show]
   post "/add_to_cart/:id", to: "carts#add_to_cart", as: "add_to_cart"
-  resources :users
   resources :products
   resources :comments
   resources :ratings

@@ -1,18 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  include SessionsHelper
   include ApplicationHelper
   before_action :session_cart
 
   def load_menu
     @categories = Category.display
     @categories_option = Category.all.where(status: true).map{|c| [c.name, c.id]}
-  end
-
-  def require_login
-    return if logged_in?
-    flash[:danger] = t "please_login"
-    redirect_to login_path
   end
 
   def session_cart
