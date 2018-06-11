@@ -26,4 +26,8 @@ class ApplicationController < ActionController::Base
       @count_product_cart = 0
     end
   end
+
+  def set_search
+    @search = Product.search(params[:q])
+  end
 end

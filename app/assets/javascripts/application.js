@@ -45,9 +45,6 @@ $(document).on('click', '.star_point', function(e){
   $('#Scomit').click();
 });
 $(document).on('turbolinks:load', function() {
-  $(".scroll-to-product").click(function(){
-      $('html, body').animate({
-      scrollTop: $(".container_fullwidth").offset().top-109
-        }, 1000)
-  });
-})
+  $("#q_g_0_c_0_a_0_name option[value=name]").attr("selected","selected") ;
+  $("#q_g_0_c_0_a_0_name option[value='']").remove();
+});

@@ -1,5 +1,5 @@
 class RatingsController < ApplicationController
-  before_action :load_menu
+  before_action :load_menu, :set_search
   before_action :params_rating_id, only: :update
   before_action :product_id_params
 

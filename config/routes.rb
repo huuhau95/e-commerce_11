@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :products
   resources :comments
   resources :ratings
+  resources :static_pages
   resources :carts
   resources :orders
   resources :histories
@@ -27,5 +28,10 @@ Rails.application.routes.draw do
     resources :users
     resources :orders
     resources :comments
+    resources :products do
+      collection do
+        match 'search' => 'products#search', :via => [:get, :post], :as => :search
+      end
+    end
   end
 end

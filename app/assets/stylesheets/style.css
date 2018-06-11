@@ -3475,3 +3475,15 @@ option {
     overflow-y: scroll;
     margin-bottom: 12px;
 }
+.form_search_fe li{
+    display: inline-block;
+}
+.form_search_fe li select{
+    margin-left: 0
+}
+.form_search_fe li:last-child input{
+    vertical-align: baseline;
+}
+.mar_top10{
+    margin-top: 10px;
+}

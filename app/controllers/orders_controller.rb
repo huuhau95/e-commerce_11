@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :load_menu, :cart_user, :require_login
+  before_action :load_menu, :cart_user, :require_login, :set_search
 
   def new
     @order = current_user.orders.new

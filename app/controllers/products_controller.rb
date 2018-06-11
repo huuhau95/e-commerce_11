@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :load_menu, :load_product
+  before_action :load_menu, :load_product,:set_search
 
   def show
     @support = Supports::ProductSupport.new(@product)

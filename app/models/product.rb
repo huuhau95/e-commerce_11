@@ -30,4 +30,8 @@ class Product < ApplicationRecord
   def avg_rating
     ratings.average(:point)
   end
+
+  def  self.ransackable_attributes ( auth_object  =  nil )
+   %w(name price description)
+ end
 end

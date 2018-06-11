@@ -1,5 +1,5 @@
 class HistoriesController < ApplicationController
-  before_action :load_menu, :correct_user
+  before_action :load_menu, :correct_user, :set_search
   before_action :find_params_id, only: :show
   before_action :check_view, only: :show
 

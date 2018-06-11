@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update]
-  before_action :load_menu, :correct_user
+  before_action :load_menu, :correct_user, :set_search
 
   def new
     @user = User.new
