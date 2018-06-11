@@ -18,6 +18,35 @@
               </a>
               <div class="step-description">
               <%= link_to "Back", edit_user_path(current_user), class: "btn btn-info" %>
+              <div class="float_right">
+                <%= search_form_for @search, url: static_pages_path do |f| %>
+                  <ul class="form_search_fe">
+                    <li>
+                      <%= f.select :category_id_eq, options_for_select(@categories_option), {class: "form-control", include_blank: "Choose category"} %>
+                    </li>
+                    <li>
+                      <%= search_form_for @search do |f| %>
+                        <%= f.grouping_fields(f.object.new_grouping) do |g| %>
+                          <%= g.condition_fields(g.object.new_condition) do |c| %>
+                            <%= c.attribute_fields do |a| %>
+                              <%= a.attribute_select only: %i(id) %>
+                            <% end %>
+                            <%= c.predicate_select only: %i(cont lt gt) %>
+                            <%= c.value_fields do |v| %>
+                              <%= v.text_field :value %>
+                            <% end %>
+                          <% end %>
+                        <% end %>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= f.submit type: "submit", class: "btn btn-info", name: nil do %>
+                        <%= t "Search" %>
+                      <% end %>
+                    </li>
+                  </ul>
+                <% end %>
+              </div>
                 <div class="row">
                   <table class="table">
                     <thead>
