@@ -12,14 +12,14 @@ class User < ApplicationRecord
   before_save :downcase_email
 
   validates :name, presence: true,
-   length: {maximum: Settings.validate.name_max_length}
+  length: {maximum: Settings.validate.name_max_length}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true,
-    length: {maximum: Settings.validate.email_max_length},
-    format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
+  length: {maximum: Settings.validate.email_max_length},
+  format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
   validates :password, presence: true,
-    length: {minimum: Settings.validate.min_length_password}, allow_nil: true,
-    :on => :create
+  length: {minimum: Settings.validate.min_length_password}, allow_nil: true,
+  :on => :create
 
   scope :user_info, ->{select :id, :name, :image, :email, :role, :created_at}
   scope :search_by_name, ->(name){where("name LIKE ? ", "%#{name}%") if name.present?}
@@ -36,8 +36,13 @@ class User < ApplicationRecord
   end
 
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable,
-    :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
+  :recoverable, :rememberable, :trackable, :validatable,
+  :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
+
+  def remember
+    self.remember_token = User.new_token
+    update_attribute :remember_digest, User.digest(remember_token)
+  end
 
   def self.from_omniauth auth
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -46,7 +51,40 @@ class User < ApplicationRecord
       user.name = auth.info.name
     end
   end
+  
+  def update_with_password(params, *options)
+    current_password = params.delete(:current_password)
 
+    if params[:password].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation) if params[:password_confirmation].blank?
+    end
+
+    result = if params[:password].blank? || valid_password?(current_password)
+      update_attributes(params, *options)
+    else
+      self.assign_attributes(params, *options)
+      self.valid?
+      self.errors.add(:current_password, current_password.blank? ? :blank : :invalid)
+      false
+    end
+
+    clean_up_passwords
+    result
+  end
+
+   class << self
+    def digest string
+      cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+        BCrypt::Engine.cost
+      BCrypt::Password.create string, cost: cost
+    end
+
+    def new_token
+      SecureRandom.urlsafe_base64
+    end
+  end
+  
   private
 
   def images_size

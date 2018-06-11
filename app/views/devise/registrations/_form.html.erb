@@ -42,6 +42,15 @@
         <%= f.password_field :password_confirmation, class: "input name_field" %>
       </div>
       <% if user_signed_in? %>
+      <div class="form-row">
+        <label class="lebel-abs">
+        <%= t "current_password" %>
+        <strong class="red">
+        *
+        </strong>
+        </label>
+        <%= f.password_field :current_passwor, class: "input name_field", autocomplete: "off" %>
+      </div>
         <div class="form-row">
           <span class="picture">
             <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>

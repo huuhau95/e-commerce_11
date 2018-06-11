@@ -44,22 +44,13 @@
                 <ul class="usermenu">
                 <% if user_signed_in? %>
                 <li>
-<<<<<<< 14605b4ed8d6484d49880d0803d81db60e1521b7
-                  <%= link_to current_user.name, edit_user_path(current_user) %>
-=======
                   <%= link_to current_user.name, edit_user_registration_path,
                     {class: "log"} %>
->>>>>>> login api
                 </li>
                 <li><%= link_to t("logout"), destroy_user_session_path, method: :delete %></li>
                 <% else %>
-<<<<<<< 14605b4ed8d6484d49880d0803d81db60e1521b7
-                <li><%= link_to t("login"), login_path,{class: "login"} %></li>
-                <li><%= link_to t("Register"), new_path,{class: "register"} %></li>
-=======
                 <li><%= link_to t("login"), new_user_session_path,{class:  "log"} %></li>
                 <li><%= link_to t("Register"), new_user_registration_path,{class: "log"} %></li>
->>>>>>> login api
                 <% end %>
               </ul>
              </div>
@@ -68,11 +59,7 @@
         <div class="clearfix"></div>
         <div class="header_bottom">
           <ul class="option">
-<<<<<<< 14605b4ed8d6484d49880d0803d81db60e1521b7
-            <li class="option-cart" style="display: inline-block;float: right;">
-=======
             <li class="option-cart">
->>>>>>> login api
               <%= render "products/cart_header" %>
             </li>
           </ul>
