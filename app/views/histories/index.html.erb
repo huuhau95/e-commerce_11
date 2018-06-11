@@ -19,13 +19,10 @@
               <div class="step-description">
               <%= link_to "Back", edit_user_path(current_user), class: "btn btn-info" %>
               <div class="float_right">
-                <%= search_form_for @search, url: static_pages_path do |f| %>
-                  <ul class="form_search_fe">
+                <%= search_form_for @search_order, url: histories_path do |f| %>
+                  <ul class="form_search_fe history_filter">
                     <li>
-                      <%= f.select :category_id_eq, options_for_select(@categories_option), {class: "form-control", include_blank: "Choose category"} %>
-                    </li>
-                    <li>
-                      <%= search_form_for @search do |f| %>
+                      <%= search_form_for @search_order do |f| %>
                         <%= f.grouping_fields(f.object.new_grouping) do |g| %>
                           <%= g.condition_fields(g.object.new_condition) do |c| %>
                             <%= c.attribute_fields do |a| %>
@@ -45,6 +42,14 @@
                       <% end %>
                     </li>
                   </ul>
+                <% end %>
+              </div>
+              <div class="row">
+                <% if(@history.present?) %>
+                  <h3 class="title"><strong><%= t "order total" %></strong> <%= @history.size %></h3>
+                <% else %>
+                <br/>
+                <h3><%= t "No results found" %></h3>
                 <% end %>
               </div>
                 <div class="row">

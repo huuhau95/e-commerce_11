@@ -20,7 +20,8 @@
 //= require jquery.sequence-min
 //= require jquery.elevatezoom.js
 //= require toastr
-//= require turbolinks
+//= require jquery.turbolinks
+//= require scroll.js
 $(document).ready(function(){
   toastr.options = {
   "closeButton": false,
@@ -44,7 +45,22 @@ $(document).on('click', '.star_point', function(e){
   toastr['success']('Thank you rating product');
   $('#Scomit').click();
 });
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
   $("#q_g_0_c_0_a_0_name option[value=name]").attr("selected","selected") ;
   $("#q_g_0_c_0_a_0_name option[value='']").remove();
+  $(".history_filter li #q_g_0_c_0_a_0_name").change(function(){
+    a = $(this).val();
+    if(a == "created_at"){
+      $(this).parent().find("input[type=text]").attr("type","date")
+    }
+    else{
+      $(this).parent().find("input[type=date]").attr("type","text")
+    }
+  });
+  $("#gallery_01 li a").each(function(){
+      $(this).click(function(){
+        a = $(this).children().attr("src");
+        $(this).parent().parent().parent().parent().siblings().children().attr("src",a)
+      });
+  });
 });

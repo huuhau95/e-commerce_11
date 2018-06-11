@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :load_menu, :find_product, :set_search
+  before_action :load_menu, :find_product, :set_search_product
 
   def create
     @comment = current_user.comments.build comment_params

@@ -4,7 +4,7 @@
   <div class="container">
     <%= render "flash/flash" %>
     <div class="hot-products">
-      <h3 class="title"><strong><%= t "Result total" %></strong> <%= @products.size %></h3>
+      <h3 class="title"><strong><%= t "Result total" %></strong> <%= @products.present? ? @products.size : "0" %></h3>
       <div class="row">
         <%= render @products %>
       </div>

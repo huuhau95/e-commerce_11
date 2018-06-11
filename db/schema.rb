@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20180604084957) do
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "address"
     t.string "phone"
-    t.integer "status"
+    t.integer "status", default: 0
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20180604084957) do
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
-    t.boolean "status"
+    t.integer "status"
     t.integer "price"
     t.integer "new_price"
     t.integer "quantity"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20180604084957) do
     t.string "image"
     t.string "password_digest"
     t.date "birthday"
-    t.integer "role"
+    t.integer "role", default: 0
     t.string "remember_digest"
     t.string "images"
     t.datetime "created_at", null: false

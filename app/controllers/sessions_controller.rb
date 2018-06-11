@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :load_menu, :set_search
+  before_action :load_menu, :set_search_product
 
   def new; end
 

@@ -1,10 +1,10 @@
 class HistoriesController < ApplicationController
-  before_action :load_menu, :correct_user, :set_search
+  before_action :load_menu, :correct_user, :set_search_product, :set_search_order_history
   before_action :find_params_id, only: :show
   before_action :check_view, only: :show
 
   def index
-  	@history = current_user.orders
+  	@history = @search_order.result(distinct: true).all.page(params[:page]).per Settings.settings.per_page
   end
 
   def show
@@ -26,5 +26,9 @@ class HistoriesController < ApplicationController
 
   def correct_user
   	redirect_to root_url unless logged_in?
+  end
+
+  def set_search_order_history
+    @search_order = current_user.orders.search(params[:q])
   end
 end

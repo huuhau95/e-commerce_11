@@ -68,7 +68,11 @@
       <td colspan="6">
         <%= link_to t("continue_shoping"), root_path, class: "pull-left button" %>
         <%= link_to t("checkout"), new_order_path, class: "pull-right button" %>
-      </td>
+      </td> &nbsp;&nbsp;&nbsp;&nbsp;
+    </tr>
+    <tr>
+      <span class="order_total"><%= t "order total" %> </span>
+      <strong><%= @cart.size %></strong>
     </tr>
   <% end %>
 </tfoot>

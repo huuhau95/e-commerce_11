@@ -2,7 +2,7 @@ class CreateProducts < ActiveRecord::Migration[5.1]
   def change
     create_table :products do |t|
       t.string :name
-      t.boolean :status
+      t.integer :status
       t.integer :price
       t.integer :new_price
       t.integer :quantity

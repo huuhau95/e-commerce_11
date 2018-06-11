@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :load_menu, :load_category,:set_search, only: :show
+  before_action :load_menu, :load_category,:set_search_product, only: :show
 
   def show
     @products = @category.products.status_true.page(params[:page]).per Settings.settings.per_page

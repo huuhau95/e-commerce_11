@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_action :product_params_id, :load_menu,:set_search
+  before_action :product_params_id, :load_menu,:set_search_product
   before_action :cart_user, only: :index
 
   def index; end

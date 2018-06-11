@@ -1,12 +1,7 @@
-$(document).ready(function(){
-  $("#submit_scroll").click(function(){
-    $(".user_comment").animate({
-     scrollTop: $('.user_comment')[ 0].scrollHeight
-   }, 'slow');
-  });
-});
-$(window).on('turbolinks:load', function() {
-    $(".user_comment").animate({
-     scrollTop: $('.user_comment')[ 0].scrollHeight
-   }, 'slow');
-});
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.0&appId=181124862597047&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));

@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_search
+  def set_search_product
     @search = Product.search(params[:q])
   end
 end

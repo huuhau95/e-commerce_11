@@ -1,20 +1,25 @@
-<tr>
-  <td>
-    <%= product.category.name %>
-  </td>
-  <td>
-    <%= image_tag product.images.first.image_url.url if product.images.first.present? %>
-  </td>
-  <td>
-    <%= product.name %>
-  </td>
-  <td>
-    <%= product.status == true ? "In stock":"Out of stock" %>
-  </td>
-  <td>
-    <%= product.created_at.strftime("%Y-%m-%d") %>
-  </td>
-  <td>
-    <%= link_to t("edit"), edit_admin_product_path(product), class: "btn btn-primary" %>
-  </td>
-</tr>
+<% products.each.with_index 1 do |product, index| %>
+  <tr>
+    <td>
+      <%= index %>
+    </td>
+    <td>
+      <%= product.category.name %>
+    </td>
+    <td>
+      <%= image_tag product.images.first.image_url.url if product.images.first.present? %>
+    </td>
+    <td>
+      <%= product.name %>
+    </td>
+    <td>
+      <%= product.status %>
+    </td>
+    <td>
+      <%= product.created_at.strftime("%Y-%m-%d") %>
+    </td>
+    <td>
+      <%= link_to t("edit"), edit_admin_product_path(product), class: "btn btn-primary" %>
+    </td>
+  </tr>
+<% end %>

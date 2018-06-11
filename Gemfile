@@ -28,7 +28,7 @@ gem "rails", "~> 5.1.6"
 gem "safe_attributes"
 gem "sass-rails", "~> 5.0"
 gem "toastr-rails"
-gem "turbolinks", "~> 5"
+gem 'jquery-turbolinks'
 gem "uglifier", ">= 1.3.0"
 
 group :development, :test do

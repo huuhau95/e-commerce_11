@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :category
   has_many :ratings
+  enum status: [:stock, :Out_of_stock]
   has_many :comments
   has_many :order_details
   has_many :images, dependent: :destroy
@@ -18,7 +19,7 @@ class Product < ApplicationRecord
       only_integer: true}
   validates :description, presence: true
   validates :category_id, presence: true
-  scope :status_true, ->{where(status: 1)}
+  scope :status_true, ->{where(status: 0)}
   scope :order_product, ->{order created_at: :desc}
   scope :ordered, ->{order created_at: :asc}
   scope :search_by_name, ->(name){where("name LIKE ? ", "%#{name}%") if name.present?}

@@ -19,7 +19,7 @@
   </div>
   <div class="form-group">
     <%= f.label :new_price %>
-    <%= f.number_field :new_price, class: "form-control", id: "new_price" %>
+    <%= f.number_field :new_price, class: "form-control", id: "new_price",readonly: "true" %>
   </div>
   <div class="form-group">
     <%= f.label :quantity %>
@@ -27,8 +27,7 @@
   </div>
   <div class="form-group">
     <%= f.label :status %>
-    <%= f.select :status, [["In stock", true], ["Out of stock", false]],
-    {:prompt=>true}, {class: "form-control"} %>
+    <%= f.select :status, Product.statuses.keys, {}, {class: "form-control"} %>
   </div>
   <div class="form-group">
     <%= f.label :description %>
