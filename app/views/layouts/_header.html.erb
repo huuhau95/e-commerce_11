@@ -18,15 +18,15 @@
                       <%= f.select :category_id_eq, options_for_select(@categories_option), {class: "form-control", include_blank: "Choose category"} %>
                     </li>
                     <li>
-                      <%= search_form_for @search do |f| %>
-                        <%= f.grouping_fields(f.object.new_grouping) do |g| %>
-                          <%= g.condition_fields(g.object.new_condition) do |c| %>
-                            <%= c.attribute_fields do |a| %>
-                              <%= a.attribute_select only: %i(id) %>
+                      <%= search_form_for @search do |field| %>
+                        <%= field.grouping_fields(field.object.new_grouping) do |group_field| %>
+                          <%= group_field.condition_fields(group_field.object.new_condition) do |condition_field| %>
+                            <%= condition_field.attribute_fields do |attribute_field| %>
+                              <%= attribute_field.attribute_select only: %i(id) %>
                             <% end %>
-                            <%= c.predicate_select only: %i(cont lt gt) %>
-                            <%= c.value_fields do |v| %>
-                              <%= v.text_field :value %>
+                            <%= condition_field.predicate_select only: %i(cont lt gt) %>
+                            <%= condition_field.value_fields do |value_field| %>
+                              <%= value_field.text_field :value %>
                             <% end %>
                           <% end %>
                         <% end %>
