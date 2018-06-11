@@ -44,13 +44,12 @@
                 <ul class="usermenu">
                 <% if logged_in? %>
                 <li>
-                  <%= link_to current_user.name, edit_user_path(current_user),
-                    {class: "log"} %>
+                  <%= link_to current_user.name, edit_user_path(current_user) %>
                 </li>
                 <li><%= link_to t("logout"), logout_path, method: :delete %></li>
                 <% else %>
-                <li><%= link_to t("login"), login_path,{class: "log"} %></li>
-                <li><%= link_to t("Register"), new_path,{class: "log"} %></li>
+                <li><%= link_to t("login"), login_path,{class: "login"} %></li>
+                <li><%= link_to t("Register"), new_path,{class: "register"} %></li>
                 <% end %>
               </ul>
              </div>
