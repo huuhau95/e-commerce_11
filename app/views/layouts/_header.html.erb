@@ -49,7 +49,7 @@
                 </li>
                 <li><%= link_to t("logout"), logout_path, method: :delete %></li>
                 <% else %>
-                <li><%= link_to t("login"), login_path,{class:  "log"} %></li>
+                <li><%= link_to t("login"), login_path,{class: "log"} %></li>
                 <li><%= link_to t("Register"), new_path,{class: "log"} %></li>
                 <% end %>
               </ul>
