@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token
-
   has_many :comments
   has_many :orders
   has_many :ratings
@@ -37,21 +35,8 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable,
-  :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
+  :omniauthable, omniauth_providers: [:facebook, :google_oauth2, :twitter]
 
-  def remember
-    self.remember_token = User.new_token
-    update_attribute :remember_digest, User.digest(remember_token)
-  end
-
-  def self.from_omniauth auth
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      user.name = auth.info.name
-    end
-  end
-  
   def update_with_password(params, *options)
     current_password = params.delete(:current_password)
 
@@ -73,18 +58,30 @@ class User < ApplicationRecord
     result
   end
 
-   class << self
+  class << self
     def digest string
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-        BCrypt::Engine.cost
+      BCrypt::Engine.cost
       BCrypt::Password.create string, cost: cost
+    end
+
+    def from_omniauth auth
+      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+        if auth.info.email.nil?
+          user.email = "#{auth.uid}@gmail.com"
+        else
+          user.email = auth.info.email
+        end
+        user.password = Devise.friendly_token[0,20]
+        user.name = auth.info.name
+      end
     end
 
     def new_token
       SecureRandom.urlsafe_base64
     end
   end
-  
+
   private
 
   def images_size

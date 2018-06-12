@@ -1,4 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  include ApplicationHelper
+  before_action :load_menu
 
   def create
     @user = User.new params_user
@@ -14,7 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.require(:user).permit :email, :name, :password, :password_confirmation, :image
   end
 
-   def account_update_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image)
+  def account_update_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :current_password, :image)
   end
 end

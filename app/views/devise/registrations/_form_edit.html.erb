@@ -21,8 +21,9 @@
         *
         </strong>
         </label>
-        <%= f.text_field :email, class: "input name_field" %>
+        <%= f.text_field :email, class: "input name_field", disabled: true %>
       </div>
+      <% if current_user.uid.blank? %>
       <div class="form-row">
         <label class="lebel-abs">
         <%= t "password" %>
@@ -49,15 +50,15 @@
         *
         </strong>
         </label>
-        <%= f.password_field :current_passwor, class: "input name_field", autocomplete: "off" %>
+        <%= f.password_field :current_password, class: "input name_field", autocomplete: "off" %>
       </div>
+      <% end %>
+      <% end %>
         <div class="form-row">
           <span class="picture">
             <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
           </span>
         </div>
-       <% end %>
-       <%= render "devise/shared/links" %>
        <%= f.submit yield(:button_text), class: "btn btn-primary" %>
     </div>
   </div>
