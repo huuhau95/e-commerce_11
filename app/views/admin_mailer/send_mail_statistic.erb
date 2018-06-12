@@ -38,13 +38,13 @@
     </tr>
   </thead>
   <tbody>
-    <% @total_price.each do |product, quantity| %>
+    <% @total_price.each do |product, price| %>
       <tr>
         <td class="py-1">
           <%= product %>
         </td>
         <td>
-          <%= quantity %>
+          <%= price %>
         </td>
       </tr>
     <% end %>
