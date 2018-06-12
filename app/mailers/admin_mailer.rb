@@ -10,6 +10,6 @@ class AdminMailer < ApplicationMailer
     @total_price = Product.total_this_month :price
     @total_quantity = Product.total_this_month :quantity
     @admin = admin
-    mail to: @admin.email, subject: "Monthly_statistic"
+    mail to: @admin.email, subject: t("Monthly_statistic")
   end
 end
