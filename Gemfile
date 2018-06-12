@@ -18,6 +18,7 @@ gem "i18n-js"
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
 gem "font-awesome-rails"
+gem 'whenever', require: false
 gem "kaminari"
 gem "material_icons"
 gem "mini_magick", "4.7.0"

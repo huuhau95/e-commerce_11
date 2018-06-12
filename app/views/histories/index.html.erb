@@ -1,11 +1,4 @@
 <% provide :title, "History" %>
-<div class="page-index">
-  <div class="container">
-    <p>
-      <%= t "acount" %>
-    </p>
-  </div>
-</div>
 <div class="container_fullwidth">
   <div class="container">
     <div class="row">
@@ -20,6 +13,7 @@
               <%= link_to "Back", edit_user_path(current_user), class: "btn btn-info" %>
               <div class="float_right">
                 <%= search_form_for @search_order, url: histories_path do |f| %>
+                <%= render "flash/flash" %>
                   <ul class="form_search_fe history_filter">
                     <li>
                       <%= search_form_for @search_order do |f| %>
@@ -44,9 +38,9 @@
                   </ul>
                 <% end %>
               </div>
-              <div class="row">
-                <% if(@history.present?) %>
-                  <h3 class="title"><strong><%= t "order total" %></strong> <%= @history.size %></h3>
+              <div class="mar_top10">
+                <% if @history.present? %>
+                  <h3 class="title"><strong><%= t "order_total" %></strong> <%= @history.total_count %></h3>
                 <% else %>
                 <br/>
                 <h3><%= t "No results found" %></h3>
@@ -67,6 +61,7 @@
                       <%= render partial: "table", collection: @history, as: :history %>
                     </tbody>
                   </table>
+                  <%= paginate @history, theme: 'twitter-bootstrap-3' %>
                 </div>
               </div>
             </li>
