@@ -1,7 +1,8 @@
 class AdminMailer < ApplicationMailer
 
   def send_mail_statistic
-    User.admins.each do |admin|
+    o= User.all
+    o.statuses[:admin].each do |admin|
       self.load_statistic(admin).deliver
     end
   end
