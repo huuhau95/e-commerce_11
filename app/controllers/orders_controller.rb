@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
     @quantity_product = @cart.map {|id, quantity| [Product.find_by(id: id), quantity]}
 
     if session[:cart].blank?
-      flash[:danger] = t :need_login_checkout
+      flash[:danger] = t :empty_cart
       redirect_to root_url
     end
   end

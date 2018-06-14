@@ -1,0 +1,20 @@
+<tr>
+  <td>
+    <%= product.category.name %>
+  </td>
+  <td>
+    <%= image_tag product.images.first.image_url.url if product.images.first.present? %>
+  </td>
+  <td>
+    <%= product.name %>
+  </td>
+  <td>
+    <%= product.status %>
+  </td>
+  <td>
+    <%= product.created_at.strftime("%Y-%m-%d") %>
+  </td>
+  <td>
+    <%= link_to t("edit"), edit_admin_product_path(product), class: "btn btn-primary" %>
+  </td>
+</tr>

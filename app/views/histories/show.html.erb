@@ -1,0 +1,47 @@
+<% provide :title, "History" %>
+<div class="page-index">
+  <div class="container">
+    <p>
+      <%= t "acount" %>
+    </p>
+  </div>
+</div>
+<div class="container_fullwidth">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="checkout-page">
+          <ol class="checkout-steps">
+            <li class="steps active">
+              <a href="#" class="step-title">
+              <%= t "history" %>
+              </a>
+              <h3 style="text-align: center;"><%= t "total" %> :
+                <%= total_money_order @order_detail %></h3>
+              <div class="step-description">
+                <%= link_to "Back", histories_path, class: "btn btn-info" %>
+                <div class="row">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <%= render partial: "detail", collection: @order_detail, as: :order_detail %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix">
+    </div>
+  </div>
+</div>

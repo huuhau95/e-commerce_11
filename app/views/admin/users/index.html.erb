@@ -5,17 +5,21 @@
       <div class="card-body">
         <div class="overflow_hidden">
           <h1 class="float_left"><%= t "list_users" %></h1>
-          <%= link_to t("add_user"), new_admin_user_path,
-            class: "btn btn-primary float_right" %>
+          <%= link_to t("add_user"), new_admin_user_path, class: "btn btn-primary float_right" %>
         </div>
         <div class="nav search-row" id="top_menu">
           <%= form_tag admin_users_path, method: :get do %>
-            <%= text_field_tag :search,
-              params[:search], class: "form-control sinput",
-                placeholder: t("Enter_name") %>
-            <%= button_tag type: "submit", class: "btn btn-primary",
-              name: nil do %>
-              <%= t "Search" %>
+            <%= text_field_tag :search, params[:search], class: "form-control sinput",placeholder: t("Enter_name") %>
+            <%= button_tag type: "submit", class: "btn btn-primary", name: nil do %>
+              Search
+            <% end %>
+          <% end %>
+        </div>
+        <div class="nav search-row" id="top_menu">
+          <%= form_tag admin_users_path, method: :get do %>
+            <%= text_field_tag :search, params[:search], class: "form-control sinput",placeholder: t("Enter_name") %>
+            <%= button_tag type: "submit", class: "btn btn-primary", name: nil do %>
+              Search
             <% end %>
           <% end %>
         </div>
@@ -35,6 +39,9 @@
                 <%= t "role" %>
               </th>
               <th>
+                <%= t "CreateDate" %>
+              </th>
+              <th>
                 <%= t "actions" %>
               </th>
             </tr>
@@ -44,7 +51,7 @@
           </tbody>
         </table>
         <div class="margin_bottom20px float_right">
-          <%= paginate @categories, theme: "twitter-bootstrap-3" %>
+          <%= paginate @users, theme: 'twitter-bootstrap-3' %>
         </div>
       </div>
     </div>

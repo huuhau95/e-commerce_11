@@ -1,15 +1,17 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
 
-  has_many :comments
-  has_many :orders
-  has_many :ratings
-
-  mount_uploader :image, PictureUploader
+  has_many :comments, dependent: :destroy
+  has_many :orders, dependent: :destroy
+  has_many :ratings, dependent: :destroy
 
   enum status: [:user, :admin]
 
   before_save :downcase_email
+
+  validates :role, presence: true
+  scope :user_info, ->{select :id, :name, :image, :email, :role, :created_at}
+  scope :search_by_name, ->(name){where("name LIKE ? ", "%#{name}%") if name.present?}
 
   mount_uploader :image, PictureUploader
 
@@ -21,9 +23,6 @@ class User < ApplicationRecord
     format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
   validates :password, presence: true, allow_nil: true,
     length: {minimum: Settings.validate.min_length_password}
-  scope :user_info, ->{select :id, :name, :image, :email, :role, :created_at}
-  scope :search_by_name, ->(name){where("name LIKE ? ", "%#{name}%") if name.present?}
-  scope :admins, ->(role){where role: role}
 
   has_secure_password
 
@@ -50,10 +49,9 @@ class User < ApplicationRecord
     self == user
   end
 
-  def authenticated? attribute, token
-    digest = self.send "#{attribute}_digest"
-    return false if digest.nil?
-    BCrypt::Password.new(digest).is_password?(token)
+  def authenticated?(remember_token)
+    return false if remember_digest.nil?
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
 
   private
