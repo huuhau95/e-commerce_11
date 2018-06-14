@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   before_save{email.downcase!}
 
+  enum status: [:user, :admin]
+
   validates :name, presence: true, length: {maximum: 50}
   validates :role, presence: true
   validates :email, presence: true, length: {maximum: 255},

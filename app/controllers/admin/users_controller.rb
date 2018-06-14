@@ -42,6 +42,7 @@ class Admin::UsersController < Admin::BaseController
   private
 
   def user_params
+    params[:user][:role] = params[:user][:role].to_i
     params.require(:user).permit :name, :email, :image, :password, :role, :password_confirmation
   end
 

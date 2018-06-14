@@ -9,4 +9,8 @@ class Admin::BaseController < ActionController::Base
     flash[:danger] = t "please_login"
     redirect_to admin_login_path
   end
+
+  def set_search_category
+    @search = Category.search(params[:q])
+  end
 end

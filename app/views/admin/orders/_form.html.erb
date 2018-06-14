@@ -64,7 +64,7 @@
             </tr>
             <tr>
               <td>Total</td>
-              <td><%= @order.order_details.sum(:price) %> (VNĐ)</td>
+              <td><%= @order.order_details.sum("price*quantity") %> ($)</td>
             </tr>
             <tr>
               <td>Shipping fee</td>
@@ -153,7 +153,7 @@
             <%= form_for([:admin,@order]) do |f| %>
               <div class="form-group">
                 <%= f.label :status %>
-                 <%= f.select :status, Order.statuses.keys, {}, {class: "form-control"} %>
+                 <%= f.select :status, Order.statuses.map { |key, value| [key, value] },{}, {class: "form-control"} %>
               </div>
               <div class="center">
                 <%= f.submit yield(:button_text), class: "btn btn-primary" %>

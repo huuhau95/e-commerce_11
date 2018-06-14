@@ -3,7 +3,7 @@
   <%= f.label :name %>
   <%= f.text_field :name, class: 'form-control' %>
   <%= f.label :role %>
-  <%= f.number_field :role, min: 1, max: 2, class: 'form-control' %>
+  <%= f.select :role, User.statuses.map { |key, value| [key, value] },{}, class: 'form-control' %>
   <%= f.label :email %>
   <%= f.email_field :email, class: "form-control" %>
   <div class="form-group picture_user">

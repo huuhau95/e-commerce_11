@@ -43,6 +43,7 @@ class Admin::OrdersController < Admin::BaseController
   end
 
   def order_pamrams
+    params[:order][:status] = params[:order][:status].to_i
     params.require(:order).permit :status
   end
 end
