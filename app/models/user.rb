@@ -23,6 +23,8 @@ class User < ApplicationRecord
     length: {minimum: Settings.validate.min_length_password}
   scope :user_info, ->{select :id, :name, :image, :email, :role, :created_at}
   scope :search_by_name, ->(name){where("name LIKE ? ", "%#{name}%") if name.present?}
+  scope :admins, ->(role){where role: role}
+
   has_secure_password
 
   def self.digest string

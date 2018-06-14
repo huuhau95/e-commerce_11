@@ -3471,3 +3471,8 @@ option {
         margin-bottom: 20px;
     }
 }
+.tbl_view_statistic{
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    width: 500px;
+}

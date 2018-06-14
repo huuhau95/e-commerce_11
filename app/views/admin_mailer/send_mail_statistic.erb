@@ -1,0 +1,52 @@
+<h2><%= t "Dear" %> <%= @admin.name %></h2>
+<h2><%= t "title_report" %></h2>
+<h4><%= t "Total_quantities" %></h4>
+<table class="table table-striped tbl_view_statistic">
+  <thead>
+    <tr>
+      <th>
+        <%= t "product" %>
+      </th>
+      <th>
+        <%= t "total_quantity" %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @total_quantity.each do |product, quantity| %>
+      <tr>
+        <td class="py-1">
+          <%= product %>
+        </td>
+        <td>
+          <%= quantity %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<h4><%= t "Total_price" %></h4>
+<table class="table table-striped tbl_view_statistic">
+  <thead>
+    <tr>
+      <th>
+        <%= t "product" %>
+      </th>
+      <th>
+        <%= t "total_price" %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @total_price.each do |product, price| %>
+      <tr>
+        <td class="py-1">
+          <%= product %>
+        </td>
+        <td>
+          <%= price %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
