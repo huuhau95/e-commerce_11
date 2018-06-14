@@ -8,29 +8,11 @@
           <%= link_to t("add_category"), new_admin_category_path, class: "btn btn-primary float_right" %>
         </div>
         <div class="nav search-row" id="top_menu">
-          <%= search_form_for @search, url: admin_index_categories_path do |f| %>
-            <ul class="form_search_fe">
-              <li>
-                <%= search_form_for @search do |field| %>
-                  <%= field.grouping_fields(field.object.new_grouping) do |group_field| %>
-                    <%= group_field.condition_fields(group_field.object.new_condition) do |condition_field| %>
-                      <%= condition_field.attribute_fields do |attribute_field| %>
-                        <%= attribute_field.attribute_select only: %i(id) %>
-                      <% end %>
-                      <%= condition_field.predicate_select only: %i(cont lt gt) %>
-                      <%= condition_field.value_fields do |value_field| %>
-                        <%= value_field.text_field :value %>
-                      <% end %>
-                    <% end %>
-                  <% end %>
-                <% end %>
-              </li>
-              <li>
-                <%= f.submit type: "submit", class: "btn btn-primary", name: nil do %>
-                  <%= t "Search" %>
-                <% end %>
-              </li>
-            </ul>
+          <%= form_tag admin_categories_path, method: :get do %>
+            <%= text_field_tag :search, params[:search], class: "form-control sinput",placeholder: t("Enter_name") %>
+            <%= button_tag type: "submit", class: "btn btn-primary", name: nil do %>
+              Search
+            <% end %>
           <% end %>
         </div>
         <table class="table table-bordered">

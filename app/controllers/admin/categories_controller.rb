@@ -1,9 +1,9 @@
 class Admin::CategoriesController < Admin::BaseController
-  before_action :logged_in_user, :set_search_category
+  before_action :logged_in_user
   before_action :load_category, except: %i(index new create)
 
   def index
-    @categories = @search.result(distinct: true).all.ordered.page(params[:page]).per Settings.settings.per_page
+    @categories = Category.ordered.search_by_name(params[:search]).page(params[:page]).per Settings.settings.per_page
   end
 
   def new

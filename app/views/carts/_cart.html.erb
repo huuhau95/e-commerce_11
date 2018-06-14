@@ -41,7 +41,7 @@
         </td>
         <td>
           <%= form_tag cart_path(product), method: :patch, remote: true do %>
-            <%= number_field_tag :quantity, quantity %>
+            <%= number_field_tag :quantity, quantity, min: 1 %>
             <%= button_to do %>
               <%= fa_icon "refresh" %>
             <% end %>
