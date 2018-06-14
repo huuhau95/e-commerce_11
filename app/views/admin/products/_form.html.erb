@@ -27,7 +27,7 @@
   </div>
   <div class="form-group">
     <%= f.label :status %>
-    <%= f.select :status, Product.statuses.keys, {}, {class: "form-control"} %>
+    <%= f.select :status, Product.statuses.map { |key, value| [key, value] },{}, class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :description %>

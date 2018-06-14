@@ -19,7 +19,7 @@ class Product < ApplicationRecord
       only_integer: true}
   validates :description, presence: true
   validates :category_id, presence: true
-  scope :status_true, ->{where(status: 1)}
+  scope :status_true, ->{where(status: 0)}
   scope :order_product, ->{order created_at: :desc}
   scope :ordered, ->{order created_at: :asc}
   scope :search_by_name, ->(name){where("name LIKE ? ", "%#{name}%") if name.present?}
@@ -27,10 +27,7 @@ class Product < ApplicationRecord
   scope :filter_by_status, ->(status){where(status: status) if status.present?}
   scope :filter_by_higher_price, ->(higher_price){where("price >= ?", higher_price) if higher_price.present?}
   scope :filter_by_less_price, ->(less_price){where("price <= ?", less_price) if less_price.present?}
-  scope :total_this_month, ->type{joins("inner join order_details")
-    .where(created_at: Date.today.beginning_of_month..Date.today.end_of_month)
-    .group("products.name")
-    .sum("order_details.#{type}")}
+  scope :total_this_month, ->type{joins("inner join order_details on order_details.product_id = products.id").group("products.name").sum("order_details.quantity")}
 
   def avg_rating
     ratings.average(:point)

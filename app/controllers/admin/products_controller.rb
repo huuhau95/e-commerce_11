@@ -46,6 +46,7 @@ class Admin::ProductsController < Admin::BaseController
   private
 
   def product_pamrams
+    params[:product][:status] = params[:product][:status].to_i
     params.require(:product).permit :category_id, :name, :price, :new_price,
       :quantity, :status, :description, :discount,
         images_attributes: [:id, :image_url, :_destroy]
