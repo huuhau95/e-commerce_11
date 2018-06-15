@@ -1,0 +1,51 @@
+<thead>
+  <tr>
+    <th>
+      <%= t "details" %>
+    </th>
+    <th>
+      <%= t "price" %>
+    </th>
+    <th>
+      <%= t "quantity" %>
+    </th>
+    <th>
+      <%= t "price" %>
+    </th>
+  </tr>
+</thead>
+<tbody>
+  <% if @product %>
+    <% @total = 0 %>
+    <% @product.each do |product,quantity| %>
+      <% @total += product.new_price * quantity %>
+      <tr>
+        <td>
+          <div class="shop-details">
+            <div class="productname">
+              <%= product.name %>
+            </div>
+          </div>
+        </td>
+        <td>
+          <h5>
+            <%= number_format product.new_price %>
+          </h5>
+        </td>
+        <td>
+          <%= quantity %>
+        </td>
+        <td>
+          <h5 class="total_money">
+            <strong class="red">
+            <%= number_format product.new_price * quantity %>
+            </strong>
+          </h5>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+</tbody>
+<h1><%= t "total" %> : <%= number_format @total %><h1>
+<h2><%= t "name" %> : <%= @user.name %></h2>
+<h2><%= t "address" %> : <%= @order.address %></h2>

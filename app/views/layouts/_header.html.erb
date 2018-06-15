@@ -1,0 +1,92 @@
+<div class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2 col-sm-2">
+        <div class="logo">
+          <%= link_to root_path do %>
+            <%= image_tag("logo.png", alt: t("shop")) %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-10">
+        <div class="header_top">
+          <div class="row">
+             <div class="col-md-9 mar_top10">
+                <%= search_form_for @search, url: static_pages_path do |f| %>
+                  <ul class="form_search_fe">
+                    <li>
+                      <%= f.select :category_id_eq, options_for_select(@categories_option), {class: "form-control", include_blank: "Choose category"} %>
+                    </li>
+                    <li>
+                      <%= search_form_for @search do |field| %>
+                        <%= field.grouping_fields(field.object.new_grouping) do |group_field| %>
+                          <%= group_field.condition_fields(group_field.object.new_condition) do |condition_field| %>
+                            <%= condition_field.attribute_fields do |attribute_field| %>
+                              <%= attribute_field.attribute_select only: %i(id) %>
+                            <% end %>
+                            <%= condition_field.predicate_select only: %i(cont lt gt) %>
+                            <%= condition_field.value_fields do |value_field| %>
+                              <%= value_field.text_field :value %>
+                            <% end %>
+                          <% end %>
+                        <% end %>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= f.submit type: "submit", class: "btn btn-primary", name: nil do %>
+                        <%= t "Search" %>
+                      <% end %>
+                    </li>
+                  </ul>
+                <% end %>
+             </div>
+             <div class="col-md-3">
+                <ul class="usermenu">
+                <% if logged_in? %>
+                <li>
+                  <%= link_to current_user.name, edit_user_path(current_user) %>
+                </li>
+                <li><%= link_to t("logout"), logout_path, method: :delete %></li>
+                <% else %>
+                <li><%= link_to t("login"), login_path,{class: "login"} %></li>
+                <li><%= link_to t("Register"), new_path,{class: "register"} %></li>
+                <% end %>
+              </ul>
+             </div>
+          </div>
+       </div>
+        <div class="clearfix"></div>
+        <div class="header_bottom">
+          <ul class="option">
+            <li class="option-cart" style="display: inline-block;float: right;">
+              <%= render "products/cart_header" %>
+            </li>
+          </ul>
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only"><%= t "navigation" %></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+          </div>
+          <div class="navbar-collapse collapse">
+             <ul class="nav navbar-nav scroll-to-product">
+              <% if params[:action]=="home" %>
+                <% @active = "active" %>
+              <% end %>
+              <li class="dropdown <%= @active %>">
+                <a href="<%= root_path %>"><%= t "home" %></a>
+              </li>
+
+              <% @categories.each do |category| %>
+                <% if category.id == params[:id].to_i && params[:controller]=="categories" %>
+                  <% @active = "active" %>
+                <% else %>
+                  <% @active = "" %>
+                <% end %>
+                 <li class="<%= @active %>"><%= link_to category.name, category_path(category) %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>

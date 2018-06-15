@@ -1,0 +1,33 @@
+<% provide(:title, t("signup")) %>
+<% provide(:button_text, "Create my account") %>
+<div class="page-index">
+  <div class="container">
+    <p>
+      <%= yield(:title) %>
+    </p>
+  </div>
+</div>
+<div class="container_fullwidth">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="checkout-page">
+          <ol class="checkout-steps">
+            <li class="steps active">
+              <a href="#" class="step-title">
+              <%= t "acount" %>
+              </a>
+              <div class="step-description">
+                <div class="row">
+                  <%= render "users/register" %>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix">
+    </div>
+  </div>
+</div>

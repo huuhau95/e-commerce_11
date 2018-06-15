@@ -1,0 +1,78 @@
+<thead>
+  <tr>
+    <th>
+      <%= t "images" %>
+    </th>
+    <th>
+      <%= t "details" %>
+    </th>
+    <th>
+      <%= t "price" %>
+    </th>
+    <th>
+      <%= t "quantity" %>
+    </th>
+    <th>
+      <%= t "price" %>
+    </th>
+    <th>
+      <%= t "action" %>
+    </th>
+  </tr>
+</thead>
+<tbody>
+  <% unless @cart.empty? %>
+    <% @products_cart.each do |product,quantity| %>
+      <tr>
+        <td>
+          <%= gravatar_for product %>
+        </td>
+        <td>
+          <div class="shop-details">
+            <div class="productname">
+              <%= product.name %>
+            </div>
+          </div>
+        </td>
+        <td>
+          <h5>
+            <%= number_format product.new_price %>
+          </h5>
+        </td>
+        <td>
+          <%= form_tag cart_path(product), method: :patch, remote: true do %>
+            <%= number_field_tag :quantity, quantity, min: 1 %>
+            <%= button_to do %>
+              <%= fa_icon "refresh" %>
+            <% end %>
+          <% end %>
+        </td>
+        <td>
+          <h5 class="total_money">
+            <strong class="red">
+            <%= price_total_cart product, quantity %>
+            </strong>
+          </h5>
+        </td>
+        <td>
+          <%= link_to image_tag("remove.png"),cart_path(product),
+            remote: true,method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <span class="total"><%= t "total" %>
+      <strong id="total"><%= number_format @total || 0 %></strong></span>
+      <td colspan="6">
+        <%= link_to t("continue_shoping"), root_path, class: "pull-left button" %>
+        <%= link_to t("checkout"), new_order_path, class: "pull-right button" %>
+      </td> &nbsp;&nbsp;&nbsp;&nbsp;
+    </tr>
+    <tr>
+      <span class="order_total"><%= t "order total" %> </span>
+      <strong><%= @cart.size %></strong>
+    </tr>
+  <% end %>
+</tfoot>

@@ -1,0 +1,11 @@
+<div class="stars" id="start_vote">
+  <span><%= t "avg_rating" %> <%= product.avg_rating.round(0) %></span>
+  <%= form_for rating, authenticity_token: true, remote: true do |f| %>
+    <%= f.hidden_field :product_id, value: product.id %>
+    <% 5.times do |point| %>
+     <%= f.radio_button :point, 5-point, class: "star star-#{5-point} star_point", id: "star-#{5-point}" %>
+      <label class="star star-<%= 5-point %>" for="star-<%= 5-point %>" title="star-<%= 5-point %>"></label>
+    <% end %>
+    <%= f.submit "", id:  "Scomit", :style => "display: none;" %>
+  <% end %>
+</div>

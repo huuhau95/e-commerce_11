@@ -1,0 +1,45 @@
+<%= provide :title, t("list_categories") %>
+<div class="row">
+  <div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <div class="overflow_hidden">
+          <h1 class="float_left"><%= t "list_categories" %></h1>
+          <%= link_to t("add_category"), new_admin_category_path, class: "btn btn-primary float_right" %>
+        </div>
+        <div class="nav search-row" id="top_menu">
+          <%= form_tag admin_categories_path, method: :get do %>
+            <%= text_field_tag :search, params[:search], class: "form-control sinput",placeholder: t("Enter_name") %>
+            <%= button_tag type: "submit", class: "btn btn-primary", name: nil do %>
+              Search
+            <% end %>
+          <% end %>
+        </div>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>
+                <%= t "categories" %>
+              </th>
+              <th>
+                <%= t "status" %>
+              </th>
+              <th>
+                <%= t "Create Date" %>
+              </th>
+              <th>
+                <%= t "actions" %>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @categories %>
+          </tbody>
+        </table>
+        <div class="margin_bottom20px float_right">
+          <%= paginate @categories, theme: 'twitter-bootstrap-3' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

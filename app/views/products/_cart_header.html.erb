@@ -1,0 +1,30 @@
+<%= link_to(carts_path, class: "cart-icon")  do %>
+  <%= t "cart" %>
+  <span class="cart_no">
+    <%= @count_product_cart %>
+  </span>
+<% end %>
+<% unless @cart.empty? %>
+  <ul class="option-cart-item">
+    <% @products_cart.each do |product, quantity| %>
+      <li>
+        <div class="cart-item">
+          <div class="image"><%= gravatar_for product %></div>
+          <div class="item-description">
+            <p class="name"><%= product.name %></p>
+            <br><%= t "quantity" %>: <span class="light-red"><%= quantity %></span>
+            </p>
+          </div>
+          <div class="right">
+            <p class="price"><%= price_total_cart product,quantity %></p>
+            <%= link_to image_tag("remove.png"),cart_path(product),
+              remote: true,method: :delete %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+    <li><span class="total"><%= t "total" %> <strong><%= number_format @total %></strong></span>
+      <button type="" class="checkout"><%= link_to t("check out"), carts_path, class: "checkout" %></button>
+    </li>
+  </ul>
+<% end %>

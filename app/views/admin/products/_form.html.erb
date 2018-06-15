@@ -1,0 +1,47 @@
+<%= form_for([:admin,@product]) do |f| %>
+  <%= render "admin/shared/error_messages", object: f.object %>
+  <div class="form-group">
+    <%= f.label :category_id %>
+    <%= f.collection_select :category_id, Category.order(:name), :id, :name,
+      {prompt: true}, {class: "form-control"} %>
+  </div>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :price %>
+    <%= f.number_field :price,min: 1, class: "form-control", id: "old_price" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :discount %> (%)
+    <%= f.number_field :discount,min: 1, class: "form-control", id: "discount",:onkeyup => 'handleChange(this)' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :new_price %>
+    <%= f.number_field :new_price, class: "form-control", id: "new_price",readonly: "true" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :status %>
+    <%= f.select :status, Product.statuses.map { |key, value| [key, value] },{}, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+  <div class="form-group" id="images">
+    <%= f.fields_for :images do |image| %>
+      <%= render 'image_fields', f: image %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association t(".add_image"), f, :images, class: "btn btn-default" %>
+    </div>
+  </div>
+  <div class="center">
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  </div>
+<% end %>

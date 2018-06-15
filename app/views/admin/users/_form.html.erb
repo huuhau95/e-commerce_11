@@ -1,0 +1,31 @@
+<%= form_for([:admin,@user]) do |f| %>
+  <%= render 'admin/shared/error_messages', object: f.object %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+  <%= f.label :role %>
+  <%= f.select :role, User.statuses.map { |key, value| [key, value] },{}, class: 'form-control' %>
+  <%= f.label :email %>
+  <%= f.email_field :email, class: "form-control" %>
+  <div class="form-group picture_user">
+    <%= f.label :image %>
+    <br/>
+    <% if f.object.image_url.present? %>
+      <%= image_tag f.object.image_url %>
+    <% else %>
+      <img src="" alt="">
+    <% end %>
+    <div class="upload-btn-wrapper">
+      <button class="btn">Upload</button>
+      <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, class: "form-control" %>
+  </div>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation, class: "form-control" %>
+  <div class="center">
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  </div>
+<% end %>

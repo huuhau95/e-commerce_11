@@ -1,0 +1,75 @@
+<% provide :title, "History" %>
+<div class="container_fullwidth">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="checkout-page">
+          <ol class="checkout-steps">
+            <li class="steps active">
+              <a href="#" class="step-title">
+              <%= t "history" %>
+              </a>
+              <div class="step-description">
+              <%= link_to "Back", edit_user_path(current_user), class: "btn btn-info" %>
+              <div class="float_right">
+                <%= search_form_for @search_order, url: histories_path do |f| %>
+                <%= render "flash/flash" %>
+                  <ul class="form_search_fe history_filter">
+                    <li>
+                      <%= search_form_for @search_order do |f| %>
+                        <%= f.grouping_fields(f.object.new_grouping) do |g| %>
+                          <%= g.condition_fields(g.object.new_condition) do |c| %>
+                            <%= c.attribute_fields do |a| %>
+                              <%= a.attribute_select only: %i(id) %>
+                            <% end %>
+                            <%= c.predicate_select only: %i(cont lt gt) %>
+                            <%= c.value_fields do |v| %>
+                              <%= v.text_field :value %>
+                            <% end %>
+                          <% end %>
+                        <% end %>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= f.submit type: "submit", class: "btn btn-info", name: nil do %>
+                        <%= t "Search" %>
+                      <% end %>
+                    </li>
+                  </ul>
+                <% end %>
+              </div>
+              <div class="mar_top10">
+                <% if @history.present? %>
+                  <h3 class="title"><strong><%= t "order_total" %></strong> <%= @history.total_count %></h3>
+                <% else %>
+                <br/>
+                <h3><%= t "No results found" %></h3>
+                <% end %>
+              </div>
+                <div class="row">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                        <th>Create time</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <%= render partial: "table", collection: @history, as: :history %>
+                    </tbody>
+                  </table>
+                  <%= paginate @history, theme: 'twitter-bootstrap-3' %>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix">
+    </div>
+  </div>
+</div>

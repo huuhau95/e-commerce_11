@@ -1,0 +1,18 @@
+<tr>
+  <td>
+    <%= comment.user.name %>
+  </td>
+  <td>
+    <%= comment.product.name %>
+  </td>
+  <td>
+    <%= comment.description %>
+  </td>
+  <td>
+    <%= comment.created_at.strftime("%Y-%m-%d") %>
+  </td>
+  <td>
+    <%= link_to t("delete"), admin_comment_path(comment), method: :delete,
+    data: {confirm: t("confirm")}, class: "btn btn-danger" %>
+  </td>
+</tr>
