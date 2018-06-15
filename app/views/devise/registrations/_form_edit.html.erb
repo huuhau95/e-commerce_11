@@ -42,7 +42,6 @@
         </label>
         <%= f.password_field :password_confirmation, class: "input name_field" %>
       </div>
-      <% if user_signed_in? %>
       <div class="form-row">
         <label class="lebel-abs">
         <%= t "current_password" %>
@@ -52,7 +51,6 @@
         </label>
         <%= f.password_field :current_password, class: "input name_field", autocomplete: "off" %>
       </div>
-      <% end %>
       <% end %>
         <div class="form-row">
           <span class="picture">
