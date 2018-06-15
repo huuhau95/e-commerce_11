@@ -7,17 +7,21 @@
           <h1 class="float_left"><%= t "list_categories" %></h1>
           <%= link_to t("add_category"), new_admin_category_path, class: "btn btn-primary float_right" %>
         </div>
-        <div class="nav search-row" id="top_menu">
-          <%= form_tag admin_categories_path, method: :get do %>
-            <%= text_field_tag :search, params[:search], class: "form-control sinput",placeholder: t("Enter_name") %>
-            <%= button_tag type: "submit", class: "btn btn-primary", name: nil do %>
+        <div class="nav search-row top_menu_parents" id="top_menu">
+          <%= search_form_for @q, url: admin_categories_path do |f| %>
+            <%= f.search_field :name_cont,class: "form-control sinput sinput_search" %>
+            <%= button_tag type: "submit", class: "btn btn-primary button_search", name: nil do %>
               Search
             <% end %>
           <% end %>
+          <h3 class="title"><strong><%= t "Total Users" %></strong> <%= @categories.present? ? @categories.size : "0" %></h3>
         </div>
         <table class="table table-bordered">
           <thead>
             <tr>
+              <th>
+                <%= t "STT" %>
+              </th>
               <th>
                 <%= t "categories" %>
               </th>
@@ -33,7 +37,7 @@
             </tr>
           </thead>
           <tbody>
-            <%= render @categories %>
+            <%= render "category", categories: @categories %>
           </tbody>
         </table>
         <div class="margin_bottom20px float_right">

@@ -30386,3 +30386,13 @@ dl li {
     width: 50%;
     margin-bottom: 20px;
 }
+.sinput_search{
+float: left;
+width: 50%;
+}
+.button_search{
+    float: left;
+}
+.top_menu_parents{
+    margin: 10px 0;
+}

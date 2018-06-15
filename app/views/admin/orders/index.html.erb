@@ -18,7 +18,7 @@
           <thead>
             <tr>
               <th>
-                <%= t "id_order" %>
+                <%= t "STT" %>
               </th>
               <th>
                 <%= t "customer" %>
@@ -35,7 +35,7 @@
             </tr>
           </thead>
           <tbody>
-            <%= render @orders %>
+            <%= render "order", orders: @orders %>
           </tbody>
         </table>
         <div class="margin_bottom20px float_right">

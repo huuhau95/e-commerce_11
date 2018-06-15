@@ -3,7 +3,8 @@ class Admin::CategoriesController < Admin::BaseController
   before_action :load_category, except: %i(index new create)
 
   def index
-    @categories = Category.ordered.search_by_name(params[:search]).page(params[:page]).per Settings.settings.per_page
+    @q = Category.ransack(params[:q])
+    @categories = @q.result(distinct: true).all.page(params[:page]).per Settings.settings.per_page
   end
 
   def new
