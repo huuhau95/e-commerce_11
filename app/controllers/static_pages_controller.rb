@@ -10,5 +10,6 @@ class StaticPagesController < ApplicationController
     return if @products
     flash[:danger] = t "product_not_found"
     redirect_to root_url
+
   end
 end

@@ -9,6 +9,8 @@
         <div class="nav search-row" id="top_menu">
           <%= form_tag admin_orders_path, method: :get do %>
             <%= text_field_tag :status, params[:status], class: "form-control sinput",placeholder: "Enter status" %>
+            <%= select_tag :status, options_for_select([['pending', 0], ['checked', 1], ['shipped', 2]]),
+           {class: "form-control search_statuses",include_blank: "Choose status"} %>
             <%= button_tag type: "submit", class: "btn btn-primary", name: nil do %>
               Search
             <% end %>

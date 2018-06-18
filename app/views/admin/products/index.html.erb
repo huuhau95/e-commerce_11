@@ -11,17 +11,11 @@
         <div class="nav search-row" id="top_menu">
           <%= form_tag admin_products_path, method: :get do %>
             <%= text_field_tag :search, params[:search], class: "form-control sinput",placeholder: t("Enter_name") %>
-            <div style="clear:both">
-              <%= label_tag "Select category" %>
-            </div>
-              <%= select_tag :category_id, options_for_select(@categories),
-                 {class: "form-control",include_blank: "Choose category"} %>
-            <div style="clear:both">
-              <%= label_tag "Select status" %>
-            </div>
-              <%= select_tag :status, options_for_select([['Stock', 0], ['Out of stock', 1]]),
-             {class: "form-control",include_blank: "Choose status"} %>
-            <%= button_tag type: "submit", class: "btn btn-primary", name: nil do %>
+            <%= select_tag :category_id, options_for_select(@categories),
+               {class: "form-control search_category",include_blank: "Choose category"} %>
+            <%= select_tag :status, options_for_select([['Stock', 0], ['Out of stock', 1]]),
+           {class: "form-control search_statuses",include_blank: "Choose status"} %>
+            <%= button_tag type: "submit", class: "btn btn-primary submit_search", name: nil do %>
               Search
             <% end %>
           <% end %>

@@ -22,7 +22,6 @@
           <i class="mdi mdi-chart-line mdi-24px float-right"></i>
         </h4>
         <h2 class="mb-5"><%= @total_orders %></h2>
-        <h6 class="card-text">Increased by 60%</h6>
       </div>
     </div>
   </div>
@@ -32,8 +31,7 @@
         <h4 class="font-weight-normal mb-3">Total Revenue
           <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
         </h4>
-        <h2 class="mb-5"><%= @total_revenue %></h2>
-        <h6 class="card-text">Decreased by 10%</h6>
+        <h2 class="mb-5"><%= @total_revenue %> ($)</h2>
       </div>
     </div>
   </div>
@@ -44,30 +42,53 @@
           <i class="mdi mdi-diamond mdi-24px float-right"></i>
         </h4>
         <h2 class="mb-5"><%= @total_member %></h2>
-        <h6 class="card-text">Increased by 5%</h6>
       </div>
     </div>
   </div>
 </div>
 <div class="row">
-  <div class="col-md-7 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <div class="clearfix">
-          <h4 class="card-title float-left">Visit And Sales Statistics</h4>
-          <div id="visit-sale-chart-legend" class="rounded-legend legend-horizontal legend-top-right float-right"></div>
-        </div>
-        <canvas id="visit-sale-chart" class="mt-4"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-5 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Traffic Sources</h4>
-        <canvas id="traffic-chart"></canvas>
-        <div id="traffic-chart-legend" class="rounded-legend legend-vertical legend-bottom-left pt-4"></div>
-      </div>
-    </div>
-  </div>
+  <h1>Daily revenue</h1>
+  <table class="table table-bordered tbl_view_statistic">
+    <thead>
+      <tr>
+        <th>
+          <%= t "Time" %>
+        </th>
+        <th>
+          <%= t "total_order" %>
+        </th>
+        <th>
+          <%= t "Revenue" %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+        <td><%= Time.now.strftime("%m/%d/%Y") %></td>
+        <td><%= @total_order_this_day.distinct.count(:order_id) %></td>
+        <td><%= @total_order_this_day.sum('price*quantity') %> ($)</td>
+    </tbody>
+  </table>
+</div>
+<div class="row">
+  <h1>Revenue by customers</h1>
+  <table class="table table-bordered tbl_view_statistic">
+    <thead>
+      <tr>
+        <th>
+          <%= t "customer_name" %>
+        </th>
+        <th>
+          <%= t "total_order" %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @total_order_of_user.each do |name,total| %>
+        <tr>
+          <td><%= name[1] %></td>
+          <td><%= total %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

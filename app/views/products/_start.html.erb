@@ -1,5 +1,5 @@
 <div class="stars" id="start_vote">
-  <span><%= t "avg_rating" %> <%= product.avg_rating.round(0) %></span>
+  <span><%= t "avg_rating" %> <%= product.avg_rating.round(0) if product.avg_rating.present? %></span>
   <%= form_for rating, authenticity_token: true, remote: true do |f| %>
     <%= f.hidden_field :product_id, value: product.id %>
     <% 5.times do |point| %>

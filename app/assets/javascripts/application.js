@@ -22,6 +22,7 @@
 //= require toastr
 //= require jquery.turbolinks
 //= require scroll.js
+//= require turbolinks
 $(document).ready(function(){
   toastr.options = {
   "closeButton": false,

@@ -18763,7 +18763,7 @@ pre code {
 
 .table thead th {
     vertical-align: bottom;
-    border-bottom: 2px solid #ebedf2;
+    border-bottom: 2px solid #000000;
 }
 
 .table tbody+tbody {
@@ -18780,12 +18780,12 @@ pre code {
 }
 
 .table-bordered {
-    border: 1px solid #ebedf2;
+    border: 1px solid #000000;
 }
 
 .table-bordered th,
 .table-bordered td {
-    border: 1px solid #ebedf2;
+    border: 1px solid #000000;
 }
 
 .table-bordered thead th,
@@ -30383,8 +30383,22 @@ dl li {
 }
 .search-row input[name=search]{
     float: left;
-    width: 50%;
+    width: 33%;
+    padding: 12px 7px;
     margin-bottom: 20px;
+}
+.search_category{
+    float: left;
+    width: 26%;
+}
+.search_statuses{
+    float: left;
+    width: 20%;
+}
+.submit_search{
+    float: left;
+    width: 20%;
+    padding: 12px 7px;
 }
 .sinput_search{
 float: left;
@@ -30395,4 +30409,9 @@ width: 50%;
 }
 .top_menu_parents{
     margin: 10px 0;
+}
+.tbl_view_statistic{
+    border: 1px solid #000000;
+    border-collapse: collapse;
+    width: 100%;
 }
