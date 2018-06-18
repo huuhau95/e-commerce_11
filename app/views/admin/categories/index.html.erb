@@ -14,7 +14,7 @@
               Search
             <% end %>
           <% end %>
-          <h3 class="title"><strong><%= t "Total Users" %></strong> <%= @categories.present? ? @categories.size : "0" %></h3>
+          <h3 class="title"><strong><%= t "Total Users" %></strong> <span class="red_color"><%= @categories.present? ? @categories.size : "0" %></span></h3>
         </div>
         <table class="table table-bordered">
           <thead>

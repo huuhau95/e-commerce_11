@@ -5,9 +5,10 @@ class Admin::UsersController < Admin::BaseController
   def index
     @q = User.ransack(params[:q])
     @users = @q.result(distinct: true).all.page(params[:page]).per Settings.settings.per_page
+    if params[:q].present?
+      flash.now[:success] = t "search_success"
+    end
   end
-
-  def show; end
 
   def new
     @user = User.new
@@ -22,6 +23,8 @@ class Admin::UsersController < Admin::BaseController
       render :new
     end
   end
+
+  def show; end
 
   def edit; end
 

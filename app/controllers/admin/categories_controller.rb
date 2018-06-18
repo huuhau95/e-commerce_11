@@ -1,10 +1,13 @@
 class Admin::CategoriesController < Admin::BaseController
-  before_action :logged_in_user
+  before_action :logged_in_user, :load_status_category
   before_action :load_category, except: %i(index new create)
 
   def index
-    @q = Category.ransack(params[:q])
+    @q = Category.ransack params[:q]
     @categories = @q.result(distinct: true).all.page(params[:page]).per Settings.settings.per_page
+    if params[:q].present?
+      flash.now[:success] = t "search_success"
+    end
   end
 
   def new
@@ -49,5 +52,9 @@ class Admin::CategoriesController < Admin::BaseController
     return if @category
     flash[:danger] = t "category_not_found"
     redirect_to admin_categories_url
+  end
+
+  def load_status_category
+    @category_status = Category.statuses.map { |value| value }
   end
 end

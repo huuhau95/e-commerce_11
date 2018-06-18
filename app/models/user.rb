@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :ratings, dependent: :destroy
   mount_uploader :image, PictureUploader
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
   before_save{email.downcase!}
@@ -16,10 +17,15 @@ class User < ApplicationRecord
   validates :email, presence: true, length: {maximum: 255},
     format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
   validates :password, length: {minimum: 6}, allow_nil: true
+
   scope :user_info, ->{select :id, :name, :image, :email, :role, :created_at}
-  scope :search_by_name, ->(name){where("name LIKE ? ", "%#{name}%") if name.present?}
-  has_secure_password
+  scope :search_by_name, ->(name){where("name LIKE ? ",
+    "%#{name}%") if name.present?}
+  scope :total_order_of_user, ->{joins(:orders).group(:user_id,:name).sum(:id)}
   scope :admins, ->(role){where role: role}
+
+  has_secure_password
+
   def self.digest string
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
       BCrypt::Engine.cost

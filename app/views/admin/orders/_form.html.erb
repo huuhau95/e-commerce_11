@@ -20,11 +20,11 @@
           <tbody>
             <tr>
               <td>Full name</td>
-              <td><%= @order.user.name %></td>
+              <td><%= @order.name %></td>
             </tr>
             <tr>
               <td>Email</td>
-              <td><%= @order.user.email %></td>
+              <td><%= @order.email %></td>
             </tr>
             <tr>
               <td>Phone</td>
@@ -114,17 +114,17 @@
             </tr>
           </thead>
           <tbody>
-            <% @order.order_details.each do |msg| %>
+            <% @order_join.each do |msg| %>
               <tr>
                 <td>
                   <%= msg.id %>
                 </td>
                 <td>
-                  <%= image_tag msg.product.images.url if msg.product.images? %>
+                  <%= gravatar_product_images msg %>
                 </td>
-                <td><strong><%= msg.product.name %></strong>
+                <td><strong><%= msg.name %></strong>
                 </td>
-                <td> VNĐ</td>
+                <td> $ </td>
                 <td>
                   <%= msg.quantity %>
                 </td>

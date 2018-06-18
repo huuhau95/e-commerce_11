@@ -6,6 +6,6 @@ class Admin::StaticPagesController < Admin::BaseController
     @total_revenue = OrderDetail.sum('price*quantity')
     @total_member = User.count('id');
     @total_order_this_day = OrderDetail.statistic_this_day
-    @total_order_of_user = User.joins(:orders).group(:user_id,:name).sum(:id)
+    @total_order_of_user = User.total_order_of_user
   end
 end

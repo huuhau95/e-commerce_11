@@ -1,5 +1,6 @@
 class Admin::SessionsController < Admin::BaseController
   layout "admin/layouts/application"
+
   def new_admin
     return unless logged_in_admin?
     flash[:info] = t "logged_in"

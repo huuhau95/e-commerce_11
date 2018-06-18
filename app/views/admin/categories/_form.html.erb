@@ -3,7 +3,7 @@
   <%= f.label :name %>
   <%= f.text_field :name, class: "form-control" %>
   <%= f.label :status %>
-  <%= f.select :status, Category.statuses.map { |key, value| [key, value] },{}, {class: "form-control"} %>
+  <%= f.select :status, options_for_select(@category_status), {}, class: "form-control" %>
   <div class="center">
     <%= f.submit yield(:button_text), class: "btn btn-primary" %>
   </div>

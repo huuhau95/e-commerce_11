@@ -5,11 +5,10 @@ class Admin::ProductsController < Admin::BaseController
 
   def index
     @products = Product.ordered.filter_by_category(params[:category_id]).filter_by_status(params[:status]).search_by_name(params[:search]).page(params[:page]).per Settings.settings.per_page
+    if params[:category_id].present? || params[:status].present? || params[:search].present?
+      flash.now[:success] = t "search_success"
+    end
   end
-
-  def show; end
-
-  def edit; end
 
   def new
     @product = Product.new
@@ -24,6 +23,10 @@ class Admin::ProductsController < Admin::BaseController
       render :new
     end
   end
+
+  def show; end
+
+  def edit; end
 
   def update
     if @product.update_attributes product_pamrams

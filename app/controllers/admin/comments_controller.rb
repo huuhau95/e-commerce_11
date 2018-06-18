@@ -5,13 +5,13 @@ class Admin::CommentsController < Admin::BaseController
     @comments = Comment.search_by_description(params[:description]).page(params[:page]).per Settings.settings.per_page
   end
 
-  def show; end
-
-  def edit; end
-
   def new; end
 
   def create; end
+
+  def show; end
+
+  def edit; end
 
   def update; end
 

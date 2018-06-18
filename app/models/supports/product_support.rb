@@ -18,6 +18,6 @@ class Supports::ProductSupport
   end
 
   def product_slibar
-    @product_new ||= Product.order_product.limit Settings.settings.limit_product_slibar
+    @product_new ||= Product.ordered.limit Settings.settings.limit_product_slibar
   end
 end

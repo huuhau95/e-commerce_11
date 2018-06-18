@@ -231,3 +231,5 @@ en:
   Search: "Search"
   title_report: "This is statistic in this month"
   Monthly_statistic: "Monthly statistic"
+  search_success: "Search success"
+  not_found: "No results found"

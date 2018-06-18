@@ -16,3 +16,6 @@ product:
   max_price: 10000
   min_quantity: 1
   max_quantity: 500
+order:
+  min_length_address: 5
+  max_length_address: 100

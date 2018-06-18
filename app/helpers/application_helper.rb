@@ -33,6 +33,15 @@ module ApplicationHelper
     end
   end
 
+  def gravatar_product_images order
+    if order.product.images.first.nil?
+      image_tag "https://qph.fs.quoracdn.net/main-qimg-680c8f445130201b7b1850e7d02d76dd-c",
+        alt: product.name
+    else
+      image_tag order.product.images.first.image_url.url if order.product.images.first.image_url?
+    end
+  end
+
   def get_user_images comment
     if comment.image.blank?
       image = "https://png.icons8.com/dotty/2x/administrator-male.png"
