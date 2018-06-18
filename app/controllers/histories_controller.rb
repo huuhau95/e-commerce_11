@@ -25,7 +25,7 @@ class HistoriesController < ApplicationController
   end
 
   def correct_user
-  	redirect_to root_url unless logged_in?
+  	redirect_to root_url unless user_signed_in?
   end
 
   def set_search_order_history

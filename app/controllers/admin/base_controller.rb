@@ -1,7 +1,7 @@
 class Admin::BaseController < ActionController::Base
   protect_from_forgery with: :exception
   layout "admin/layouts/admin"
-  include SessionsHelper
+  include SessionsHelper1
 
   def logged_in_user
     return if logged_in?

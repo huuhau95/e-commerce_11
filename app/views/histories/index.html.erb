@@ -10,7 +10,7 @@
               <%= t "history" %>
               </a>
               <div class="step-description">
-              <%= link_to "Back", edit_user_path(current_user), class: "btn btn-info" %>
+              <%= link_to "Back", edit_user_registration_path(current_user), class: "btn btn-info" %>
               <div class="float_right">
                 <%= search_form_for @search_order, url: histories_path do |f| %>
                 <%= render "flash/flash" %>

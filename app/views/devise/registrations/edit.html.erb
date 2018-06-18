@@ -18,9 +18,14 @@
               <%= t "acount" %>
               </a>
               <div class="step-description">
-                <div class="row">
+               <%= link_to "View History Order", histories_path,
+                 class: "btn btn-primary" %>
+               <div class="col-md-offset-4 col-md-4">
+                <%= image_tag current_user.image %>
+               </div>
+               <div class="row">
                 <%= render "form_edit" %>
-                </div>
+               </div>
               </div>
             </li>
           </ol>

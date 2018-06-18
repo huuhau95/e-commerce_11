@@ -1,4 +1,3 @@
-
 module SessionsHelper1
   def log_in_admin admin
     session[:admin_id] = admin.id
