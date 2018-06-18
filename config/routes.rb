@@ -2,17 +2,14 @@ Rails.application.routes.draw do
   devise_for :users,
     controllers:{
       omniauth_callbacks: "users/omniauth_callbacks",
-      registrations: "users/registrations"
+      registrations: "users/registrations",
+      sessions: "users/sessions"
   }
   get 'history/index'
 
   get 'home/show'
 
   root "static_pages#home"
-  get "new", to: "users#new"
-  delete "/logout", to: "sessions#destroy"
-  post "/login", to: "sessions#create"
-  get "/login", to: "sessions#new"
   resources :categories, only: [:show]
   post "/add_to_cart/:id", to: "carts#add_to_cart", as: "add_to_cart"
   resources :products

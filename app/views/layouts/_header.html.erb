@@ -12,6 +12,7 @@
         <div class="header_top">
           <div class="row">
              <div class="col-md-9 mar_top10">
+              <% if @search %>
                 <%= search_form_for @search, url: static_pages_path do |f| %>
                   <ul class="form_search_fe">
                     <li>
@@ -39,6 +40,7 @@
                     </li>
                   </ul>
                 <% end %>
+              <% end %>
              </div>
              <div class="col-md-3">
                 <ul class="usermenu">

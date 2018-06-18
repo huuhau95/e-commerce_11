@@ -21,17 +21,7 @@ class User < ApplicationRecord
 
   scope :user_info, ->{select :id, :name, :image, :email, :role, :created_at}
   scope :search_by_name, ->(name){where("name LIKE ? ", "%#{name}%") if name.present?}
-  has_secure_password
   scope :admins, ->(role){where role: role}
-  def self.digest string
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-      BCrypt::Engine.cost
-    BCrypt::Password.create string, cost: cost
-  end
-
-  def forget
-    update_attribute :remember_digest, nil
-  end
 
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable,
