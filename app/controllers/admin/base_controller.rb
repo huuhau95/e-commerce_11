@@ -4,7 +4,7 @@ class Admin::BaseController < ActionController::Base
   include SessionsHelper1
 
   def logged_in_user
-    return if logged_in?
+    return if logged_in_admin?
     store_location
     flash[:danger] = t "please_login"
     redirect_to admin_login_path

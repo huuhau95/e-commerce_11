@@ -9,8 +9,9 @@ class Admin::SessionsController < Admin::BaseController
 
   def create_admin
     admin = User.find_by email: params[:session][:email].downcase
-    if admin && admin.authenticate(params[:session][:password]) && admin.role == Settings.setting_model.role_admin
+    if admin && admin.role == Settings.setting_model.role_admin
       log_in_admin admin
+      # byebug
       redirect_back_or admin_root_url
     else
       flash.now[:danger] = t "invalid"

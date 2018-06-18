@@ -1,6 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   include ApplicationHelper
-  before_action :load_menu
+  before_action :load_menu, :set_search_product
 
   def create
     @user = User.new params_user
