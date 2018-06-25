@@ -438,10 +438,7 @@ button:hover {
     padding-bottom: 30px;
 }
 
-.fa.fa-refresh{
-  color: #FA0707;
-  font-size: 17px;
-}
+
 /* HEADER STYLE */
 
 #home {
@@ -1282,16 +1279,7 @@ ul.dropdown-menu>li>a:hover {
     border: none;
     text-align: center;
 }
-.alert-alert.messages_notification{
-  color: #a94442;
-  background-color: #f2dede;
-  border-color: #ebccd1;
-}
-.alert-notice.messages_notification{
-  color: #3c763d;
-  background-color: #91E26F;
-  border-color: #d6e9c6;
-}
+
 .productname {
     float: left;
     width: 100%;

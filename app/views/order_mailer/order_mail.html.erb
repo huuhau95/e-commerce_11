@@ -1,10 +1,7 @@
 <thead>
   <tr>
     <th>
-      <%= t "details" %>
-    </th>
-    <th>
-      <%= t "price" %>
+      <%= t "name" %>
     </th>
     <th>
       <%= t "quantity" %>
@@ -20,9 +17,6 @@
     <% @product.each do |product,quantity| %>
       <% @total += product.new_price * quantity %>
       <tr>
-        <td>
-          <%= gravatar_for product %>
-        </td>
         <td>
           <div class="shop-details">
             <div class="productname">

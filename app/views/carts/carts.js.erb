@@ -5,4 +5,4 @@ $('.shop-table').html('<%= j(render("carts/cart")) %>')
 <% if @cart.empty? %>
 $('#total').text('<%= number_format 0 %>')
 <% end %>
-toastr.success('<%= @mess %>')
+toastr.success('<%= flash[:notice] %>')

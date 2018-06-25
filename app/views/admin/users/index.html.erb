@@ -8,17 +8,6 @@
           <%= link_to t("add_user"), new_admin_user_path,
             class: "btn btn-primary float_right" %>
         </div>
-        <div class="nav search-row" id="top_menu">
-          <%= form_tag admin_users_path, method: :get do %>
-            <%= text_field_tag :search,
-              params[:search], class: "form-control sinput",
-                placeholder: t("Enter_name") %>
-            <%= button_tag type: "submit", class: "btn btn-primary",
-              name: nil do %>
-              <%= t "Search" %>
-            <% end %>
-          <% end %>
-        </div>
         <div class="nav search-row top_menu_parents" id="top_menu">
           <%= search_form_for @q, url: admin_users_path do |f| %>
             <%= f.search_field :email_or_name_cont,class: "form-control sinput sinput_search" %>

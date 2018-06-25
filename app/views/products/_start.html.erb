@@ -2,7 +2,7 @@
   <span><%= t "avg_rating" %> <%= product.avg_rating.round(0) if product.avg_rating.present? %></span>
   <%= form_for rating, authenticity_token: true, remote: true do |f| %>
     <%= f.hidden_field :product_id, value: product.id %>
-    <%= max_star = Settings.settings.max_value_star %>
+    <%= max_star = Settings.order.max_value_star %>
     <% max_star.times do |point| %>
      <%= f.radio_button :point, max_star-point, class: "star star-#{max_star-point} star_point", id: "star-#{max_star-point}" %>
       <label class="star star-<%= max_star-point %>" for="star-<%= max_star-point %>" title="star-<%= max_star-point %>"></label>

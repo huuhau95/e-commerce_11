@@ -22,7 +22,6 @@
 //= require toastr
 //= require jquery.turbolinks
 //= require scroll.js
-//= require turbolinks
 $(document).ready(function(){
   toastr.options = {
   "closeButton": false,
@@ -42,7 +41,6 @@ $(document).ready(function(){
   "hideMethod": "fadeOut"
 }
 });
-
 $(document).on('click', '.star_point', function(e){
   toastr['success']('Thank you rating product');
   $('#Scomit').click();

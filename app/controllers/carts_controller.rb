@@ -38,7 +38,7 @@ class CartsController < ApplicationController
   private
 
   def check_cart_existence
-    if session[:cart].empty?
+    if session[:cart].blank?
       flash[:danger] = t :empty_cart
       redirect_to root_path
     end

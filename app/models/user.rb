@@ -25,7 +25,6 @@ class User < ApplicationRecord
   scope :total_order_of_user, ->{joins(:orders).group(:user_id,:name).sum(:id)}
   scope :admins, ->(role){where role: role}
 
-  has_secure_password
 
   def self.digest string
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

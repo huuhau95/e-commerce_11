@@ -19,10 +19,6 @@ svg {
   height: 2rem;
   overflow: visible;
 }
-.font16_clw{
-    font-size: 16px;
-    color: #fdfcfd;
-}
 .svg-icon {
   cursor: pointer;
 }
